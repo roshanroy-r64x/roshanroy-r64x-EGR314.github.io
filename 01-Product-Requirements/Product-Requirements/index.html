@@ -9,7 +9,7 @@
       
       
       
-        <link rel="canonical" href="https://embedded-systems-design.github.io/EGR314DataSheet/01-Block-Diagram/Block-Diagram/">
+        <link rel="canonical" href="https://embedded-systems-design.github.io/EGR314DataSheet/01-Product-Requirements/Product-Requirements/">
       
       
         <link rel="prev" href="../..">
@@ -26,7 +26,7 @@
 
     
       
-        <title>Individal Block Diagram - EGR 314 Roshan Roy Geoffrey Joe Datasheet</title>
+        <title>Product Requirements - EGR 314 Roshan Roy Geoffrey Joe Datasheet</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#objective" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Individal Block Diagram
+              Product Requirements
             
           </span>
         </div>
@@ -226,7 +226,7 @@
   
     
   
-  01 Block Diagram
+  01 Product Requirements
 
         </a>
       </li>
@@ -439,7 +439,7 @@
             
   
   <span class="md-ellipsis">
-    01 Block Diagram
+    01 Product Requirements
   </span>
   
 
@@ -449,7 +449,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            01 Block Diagram
+            01 Product Requirements
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -471,7 +471,7 @@
           
   
   <span class="md-ellipsis">
-    Individal Block Diagram
+    Product Requirements
   </span>
   
 
@@ -482,7 +482,7 @@
         
   
   <span class="md-ellipsis">
-    Individal Block Diagram
+    Product Requirements
   </span>
   
 
@@ -502,18 +502,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#objective" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Objective
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-block-diagram" class="md-nav__link">
+  <a href="#module-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Block Diagram
+      Module Requirements
     </span>
   </a>
   
@@ -800,18 +800,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#objective" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Objective
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-block-diagram" class="md-nav__link">
+  <a href="#module-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Block Diagram
+      Module Requirements
     </span>
   </a>
   
@@ -832,7 +832,7 @@
                   
 
   
-    <a href="https://github.com/embedded-systems-design/EGR314DataSheet/edit/main/docs/01-Block-Diagram/Block-Diagram.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/embedded-systems-design/EGR314DataSheet/edit/main/docs/01-Product-Requirements/Product-Requirements.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
     </a>
@@ -840,21 +840,84 @@
   
 
 
-  <h1>Individal Block Diagram</h1>
+  <h1>Product Requirements</h1>
 
-<h2 id="overview">Overview</h2>
-<p>This needs to be updated with a brief purpose for having the block diagram.
-Things to mention are:
-* power levels
-* sensor
-* Actuator
-* team connections
-* Power source
-* ...</p>
-<p>To get some initial formatting help, one can view <a href="https://embedded-systems-design.github.io/EGR304DataSheetTemplate/Appendix/basic-markdown-examples/">"here"</a> some basic techniques.</p>
-<h2 id="example-block-diagram">Example Block Diagram</h2>
-<p>Showing an example of how to import a screenshot of the block diagram created outside of git and brought into a page.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../individual-block-diagram.png" data-desc-position="bottom"><img alt="Example of Indivial Block diagram " src="../individual-block-diagram.png"></a></p>
+<h2 id="objective">Objective</h2>
+<p>This requirements table defines the major design constraints and goals for the Camera System module within the overall team project. The purpose of this table is to show what the camera subsystem should do in order to successfully support the team’s final system, while also identifying target goals and potential stretch improvements.</p>
+<p>Defining threshold and target measures early helps with component selection, power budgeting, system integration, and ensures that the camera module can be reliably connected to the microcontroller, power system, and wireless communication subsystem.</p>
+<h2 id="module-requirements">Module Requirements</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement Description</th>
+<th>Measure of Threshold (Failure if Not Met)</th>
+<th>Target Measure</th>
+<th>Stretch Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera Power Supply</td>
+<td>Camera operates from regulated 3.3 V or 5 V supply without brownout</td>
+<td>Dedicated regulated supply with stable operation</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Microcontroller Interface</td>
+<td>Camera communicates with system microcontroller using serial protocol</td>
+<td>SPI or parallel interface fully implemented</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Microcontroller Compatibility</td>
+<td>Camera compatible with selected PIC or ESP microcontroller</td>
+<td>Fully tested and documented MCU integration</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Image Capture Capability</td>
+<td>Camera captures at least a single static image</td>
+<td>Supports continuous image capture</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Image Resolution</td>
+<td>Minimum resolution of 320 x 240</td>
+<td>640 x 480 or higher</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Frame Rate</td>
+<td>Minimum capture rate of 1 FPS</td>
+<td>10 FPS or greater</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Data Transfer Reliability</td>
+<td>Successful transfer of at least one image</td>
+<td>Continuous image transfer without data corruption</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Power Consumption</td>
+<td>Camera does not exceed system power limits</td>
+<td>Optimized for low power operation</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Mechanical Integration</td>
+<td>Camera fits inside system housing</td>
+<td>Secure and aligned mounting</td>
+<td>No</td>
+</tr>
+<tr>
+<td>System Feature Support</td>
+<td>Camera subsystem operates independently</td>
+<td>Camera integrated with Wi-Fi subsystem</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 
 
 
