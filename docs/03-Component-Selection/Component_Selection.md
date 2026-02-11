@@ -66,6 +66,7 @@ The AS5600 class sensors require a diametrically magnetized magnet and a stable 
 | **LED BLUE/RED CLEAR 2012 SMD** | ![LED BLUE/RED CLEAR 2012 SMD](Image10.png) | [LED BLUE/RED CLEAR 2012 SMD](https://www.digikey.com/en/products/detail/kingbright/APHBM2012QBDSURKC/2263566) | varies | Allows multiple states without extra LEDs | More pins and firmware complexity |
 
 
-**Selected:** Option A - Kingbright AP2012EC (0805 red LED). 
+**Selected:** Option A - Kingbright AP2012EC (0805 red LED).
+
 **Rationale:** Simple, common, SMT compliant, and matches the block diagram need for a basic status indicator.
 
