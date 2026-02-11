@@ -26,7 +26,7 @@
 
     
       
-        <title>Schematic - EGR 314 Roshan Roy Geoffrey Joe Datasheet</title>
+        <title>Microcontroller Selection - EGR 314 Roshan Roy Geoffrey Joe Datasheet</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#microcontroller-selection-evscope" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Schematic
+              Microcontroller Selection
             
           </span>
         </div>
@@ -604,12 +604,14 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Schematic
+    Microcontroller Selection
   </span>
   
 
@@ -620,7 +622,7 @@
         
   
   <span class="md-ellipsis">
-    Schematic
+    Microcontroller Selection
   </span>
   
 
@@ -632,6 +634,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -640,18 +644,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#in-circuit-programming-and-debugging" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      In circuit programming and debugging
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#resouces" class="md-nav__link">
+  <a href="#microcontroller-peripherals-used-in-my-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
-      Resouces
+      Microcontroller peripherals used in my subsystem
     </span>
   </a>
   
@@ -792,6 +796,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -800,18 +806,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#in-circuit-programming-and-debugging" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      In circuit programming and debugging
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#resouces" class="md-nav__link">
+  <a href="#microcontroller-peripherals-used-in-my-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
-      Resouces
+      Microcontroller peripherals used in my subsystem
     </span>
   </a>
   
@@ -840,14 +846,80 @@
   
 
 
-  <h1>Schematic</h1>
-
-<h2 id="overview">Overview</h2>
-<p>This schematic is design to support .... (highlight functionally, power, and controller).</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Screenshot.png" data-desc-position="bottom"><img alt="schematic" height:_300_="height:&quot;300;&quot;" src="../Screenshot.png" style="style" width:_350_="width:&quot;350&quot;"></a>
-<strong>Figure ##:</strong> Showing a example schematic.</p>
-<h2 id="resouces">Resouces</h2>
-<p>The schematic as a PDF download is available <a href="../ExampleSchematic.pdf"><em>here</em></a>, and the Zip folder of the project <a href="../dummyZip.zip"><em>here</em></a>.</p>
+<h1 id="microcontroller-selection-evscope">Microcontroller Selection - EVScope</h1>
+<p><strong>Team 304 - Camera and Angle Sensing Subsystem</strong></p>
+<p>This page justifies the microcontroller choice for my subsystem. My subsystem needs:
+- SPI peripheral for camera data/control
+- I2C peripheral for magnetic angle sensor (AS5600)
+- UART for team communications or debug (as required by integration)
+- Several GPIO pins for trigger input, status LED, reset control, and connector signals
+- In circuit programming and debugging support using a Snap programmer</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Photo</th>
+<th>Vendor link</th>
+<th style="text-align: right;">Unit cost</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Microchip PIC18F47K42-I/PT (44-TQFP, SMT)</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip1.png" data-desc-position="bottom"><img alt="PIC18F47K42" src="../Chip1.png"></a></td>
+<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47K42-I-PT/7561733">PIC18F47K42-I-PT</a></td>
+<td style="text-align: right;">$2.79</td>
+<td>Matches course ecosystem, supports SPI, I2C, UART, SMT package, solid documentation, works with MPLAB tools</td>
+<td>8-bit limitations for heavy image processing, must manage bandwidth and buffering carefully</td>
+</tr>
+<tr>
+<td><strong>Microchip PIC18F46K42-I/PT (44-TQFP, SMT)</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip2.png" data-desc-position="bottom"><img alt="PIC18F46K42" src="../Chip2.png"></a></td>
+<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F46K42-I-PT/7559457">PIC18F46K42-I-PT</a></td>
+<td style="text-align: right;">$2.54</td>
+<td>Very similar peripheral set, potentially simpler if memory needs are lower</td>
+<td>Less program memory than PIC18F47K42, fewer safety margins for camera libraries and features</td>
+</tr>
+<tr>
+<td><strong>ST STM32G031K8T6 (32-bit, SMT)</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip3.png" data-desc-position="bottom"><img alt="STM32G031K8T6" src="../Chip3.png"></a></td>
+<td><a href="https://www.digikey.com/en/products/detail/stmicroelectronics/STM32G031K8T6/10300267">STM32G031K8T6</a></td>
+<td style="text-align: right;">$2.32</td>
+<td>32-bit performance, strong peripheral support, good for higher throughput</td>
+<td>Toolchain and course workflow may be less aligned, higher integration risk for this class</td>
+</tr>
+<tr>
+<td><strong>Microchip ATmega4809-AU (AVR, SMT)</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip4.png" data-desc-position="bottom"><img alt="ATmega4809" src="../Chip4.png"></a></td>
+<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/ATMEGA4809-AU/10444928">ATmega4809-AU</a></td>
+<td style="text-align: right;">$1.74</td>
+<td>Common, low cost, plenty of example code</td>
+<td>Integration and course support may not match PIC workflow, performance constraints similar to PIC but with different ecosystem</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Selected:</strong> Microchip PIC18F47K42-I/PT (44-TQFP, SMT).</p>
+<p><strong>Rationale:</strong> This device is the best fit for my subsystem because it natively supports the exact interfaces needed (SPI for camera, I2C for AS5600, UART for integration) while staying fully aligned with the class Microchip toolchain and programming flow. The selected package is surface mount, matching the project requirement.</p>
+<hr>
+<h2 id="in-circuit-programming-and-debugging">In circuit programming and debugging</h2>
+<p><strong>Programmer/debugger:</strong> MPLAB Snap (PG164100).<br>
+- Product references:
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Snap.png" data-desc-position="bottom"><img alt="MPLAB Snap" src="../Snap.png"></a>
+  <a href="https://www.digikey.com/en/products/detail/microchip-technology/PG164100/9562532">MPLAB Snap PG164100</a></p>
+<p><strong>How it connects in the design:</strong>
+- Add an ICSP style programming header on the PCB and route the required programming pins from the PIC to that header.
+- Ensure power and ground are available during programming, and the reset line is handled correctly for programming entry.</p>
+<hr>
+<h2 id="microcontroller-peripherals-used-in-my-subsystem">Microcontroller peripherals used in my subsystem</h2>
+<ul>
+<li><strong>SPI1:</strong> Camera module interface (SCK, SDO, SDI, CS)</li>
+<li><strong>I2C1:</strong> AS5600 angle sensor interface (SCL, SDA)</li>
+<li><strong>UART1:</strong> Team integration or debug interface (TX, RX)</li>
+<li><strong>GPIO:</strong> Trigger input, LED output, reset control line (as shown in my diagram)</li>
+</ul>
 
 
 
