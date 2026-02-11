@@ -2,57 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/01-Product-Requirements/Product-Requirements/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/02-Block-Diagram/Block_Diagram/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embedded-systems-design.github.io/EGR314DataSheet/03-BOM/BOM/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <loc>https://embedded-systems-design.github.io/EGR314DataSheet/03-Component-Selection/Component_Selection/</loc>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embedded-systems-design.github.io/EGR314DataSheet/04-Schematic/schematic/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <loc>https://embedded-systems-design.github.io/EGR314DataSheet/04-Microcontroller%20Selection/Microcontroller_Selection/</loc>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/05-Power-Budget/Power-Budget/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/Appendix/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/Appendix/another-subfile/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/Appendix/basic-markdown-examples/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/Appendix/charts/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://embedded-systems-design.github.io/EGR314DataSheet/Appendix/esp-32-table/</loc>
-         <lastmod>2026-02-05</lastmod>
+         <lastmod>2026-02-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
