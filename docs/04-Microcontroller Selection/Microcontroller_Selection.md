@@ -31,9 +31,8 @@ This page justifies the microcontroller choice for my subsystem. My subsystem ne
 
 ## In circuit programming and debugging
 **Programmer/debugger:** MPLAB Snap (PG164100).  
-- Product references:
+- Product references: [MPLAB Snap PG164100](https://www.digikey.com/en/products/detail/microchip-technology/PG164100/9562532)
   ![MPLAB Snap](Snap.png)
-  [MPLAB Snap PG164100](https://www.digikey.com/en/products/detail/microchip-technology/PG164100/9562532)
 
 **How it connects in the design:**
 - Add an ICSP style programming header on the PCB and route the required programming pins from the PIC to that header.
