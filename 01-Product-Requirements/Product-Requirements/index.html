@@ -843,8 +843,8 @@
   <h1>Product Requirements</h1>
 
 <h2 id="objective">Objective</h2>
-<p>This requirements table defines the major design constraints and goals for the Camera System module within the overall team project. The purpose of this table is to show what the camera subsystem should do in order to successfully support the team’s final system, while also identifying target goals and potential stretch improvements.</p>
-<p>Defining threshold and target measures early helps with component selection, power budgeting, system integration, and ensures that the camera module can be reliably connected to the microcontroller, power system, and wireless communication subsystem.</p>
+<p>This requirements table defines the major design constraints and goals for the Human Interface / UI subsystem within the overall team project. The purpose of this table is to describe what the user interface module must accomplish in order to effectively communicate system information to the user and accept user inputs.</p>
+<p>Defining threshold and target measures early helps guide component selection, display design, power budgeting, and subsystem integration. These requirements ensure that the UI subsystem reliably interfaces with the system microcontroller, power system, and other subsystems while providing clear feedback to the user.</p>
 <h2 id="module-requirements">Module Requirements</h2>
 <table>
 <thead>
@@ -857,63 +857,75 @@
 </thead>
 <tbody>
 <tr>
-<td>Camera Power Supply</td>
-<td>Camera operates from regulated 3.3 V or 5 V supply without brownout</td>
-<td>Dedicated regulated supply with stable operation</td>
+<td>Power Supply Compatibility</td>
+<td>UI subsystem operates from regulated <strong>3.3 V system supply</strong></td>
+<td>Stable operation across full system load conditions</td>
 <td>No</td>
 </tr>
 <tr>
-<td>Microcontroller Interface</td>
-<td>Camera communicates with system microcontroller using serial protocol</td>
-<td>SPI or parallel interface fully implemented</td>
-<td>Yes</td>
+<td>Display Interface</td>
+<td>OLED display communicates with microcontroller</td>
+<td>Reliable <strong>I2C communication</strong> with display</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Microcontroller Compatibility</td>
-<td>Camera compatible with selected PIC or ESP microcontroller</td>
-<td>Fully tested and documented MCU integration</td>
+<td>UI subsystem compatible with selected <strong>ESP32 microcontroller</strong></td>
+<td>Fully tested firmware and hardware integration</td>
 <td>No</td>
 </tr>
 <tr>
-<td>Image Capture Capability</td>
-<td>Camera captures at least a single static image</td>
-<td>Supports continuous image capture</td>
+<td>User Input Capability</td>
+<td>At least one button input detected by the microcontroller</td>
+<td>Multiple button inputs supported for user interaction</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Visual Output Capability</td>
+<td>System status displayed on OLED screen</td>
+<td>Dynamic text or graphics display supported</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Status Indication</td>
+<td>Basic LED status indicator operational</td>
+<td>Multiple status states indicated through display or LED</td>
 <td>No</td>
 </tr>
 <tr>
-<td>Image Resolution</td>
-<td>Minimum resolution of 320 x 240</td>
-<td>640 x 480 or higher</td>
+<td>System Communication</td>
+<td>Microcontroller communicates with system through serial interface</td>
+<td>Debug and integration communication via UART</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td>Frame Rate</td>
-<td>Minimum capture rate of 1 FPS</td>
-<td>10 FPS or greater</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Data Transfer Reliability</td>
-<td>Successful transfer of at least one image</td>
-<td>Continuous image transfer without data corruption</td>
+<td>Data Display Reliability</td>
+<td>Display updates without communication errors</td>
+<td>Smooth and responsive display updates</td>
 <td>No</td>
 </tr>
 <tr>
 <td>Power Consumption</td>
-<td>Camera does not exceed system power limits</td>
-<td>Optimized for low power operation</td>
+<td>UI subsystem remains within system power budget</td>
+<td>Optimized low power operation when idle</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Expandability</td>
+<td>Basic interface connections available</td>
+<td>Expansion header supports additional peripherals</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>Mechanical Integration</td>
-<td>Camera fits inside system housing</td>
-<td>Secure and aligned mounting</td>
+<td>Display and interface components fit within subsystem housing</td>
+<td>Clean front panel mounting and user accessibility</td>
 <td>No</td>
 </tr>
 <tr>
 <td>System Feature Support</td>
-<td>Camera subsystem operates independently</td>
-<td>Camera integrated with Wi-Fi subsystem</td>
+<td>UI subsystem provides basic system feedback</td>
+<td>Integrated system status monitoring and configuration UI</td>
 <td>Yes</td>
 </tr>
 </tbody>
