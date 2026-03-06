@@ -6,9 +6,9 @@ tags:
 ---
 
 # Component Selection
-**Team 304 - Camera and Angle Sensing Subsystem**
+**Team 304 - Human Interface/UI Subsystem**
 
-This page covers all major components in my subsystem including the embedded controller, power regulation, user interface display, and status indication. All options below follow the course preference for surface mount components where possible. Some interface devices (camera modules and displays) are provided as small modules that connect through headers, which are allowed exceptions.
+This page covers all major components in my subsystem including the embedded controller, power regulation, user interface display, and status indication. All options below follow the course preference for surface mount components where possible. Some interface devices are provided as small modules that connect through headers, which are allowed exceptions.
 
 ---
 
