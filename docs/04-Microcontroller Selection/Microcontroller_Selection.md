@@ -3,46 +3,96 @@ title: Microcontroller Selection
 ---
 
 # Microcontroller Selection - EVScope
-**Team 304 - Camera and Angle Sensing Subsystem**
+**Team 304 - Human Interface / UI Subsystem**
 
-This page justifies the microcontroller choice for my subsystem. My subsystem needs:
-- SPI peripheral for camera data/control
-- I2C peripheral for magnetic angle sensor (AS5600)
-- UART for team communications or debug (as required by integration)
-- Several GPIO pins for trigger input, status LED, reset control, and connector signals
-- In circuit programming and debugging support using a Snap programmer
+This page justifies the microcontroller choice for the Human Interface / UI subsystem. This subsystem is responsible for managing the display interface, handling user inputs, and communicating status information between the user and the rest of the EVScope system.
+
+The microcontroller must support the following interfaces and capabilities:
+
+- I2C peripheral for the OLED display interface (SSD1306)
+- UART for programming and debug communication
+- Several GPIO pins for user input buttons, status LED, and expansion headers
+- External programming interface through a UART programming header
+- Reliable surface mount package suitable for PCB assembly
+- Sufficient processing capability to manage display updates and user input events
 
 ---
 
-
+## Microcontroller Options
 
 | Option | Photo | Vendor link | Unit cost | Pros | Cons |
 |---|---|---|---:|---|---|
-| **Microchip PIC18F47K42-I/PT (44-TQFP, SMT)** | ![PIC18F47K42](Chip1.png) | [PIC18F47K42-I-PT](https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47K42-I-PT/7561733) | $2.79 | Matches course ecosystem, supports SPI, I2C, UART, SMT package, solid documentation, works with MPLAB tools | 8-bit limitations for heavy image processing, must manage bandwidth and buffering carefully |
-| **Microchip PIC18F46K42-I/PT (44-TQFP, SMT)** | ![PIC18F46K42](Chip2.png) | [PIC18F46K42-I-PT](https://www.digikey.com/en/products/detail/microchip-technology/PIC18F46K42-I-PT/7559457) | $2.54 | Very similar peripheral set, potentially simpler if memory needs are lower | Less program memory than PIC18F47K42, fewer safety margins for camera libraries and features |
-| **ST STM32G031K8T6 (32-bit, SMT)** | ![STM32G031K8T6](Chip3.png) | [STM32G031K8T6](https://www.digikey.com/en/products/detail/stmicroelectronics/STM32G031K8T6/10300267) | $2.32 | 32-bit performance, strong peripheral support, good for higher throughput | Toolchain and course workflow may be less aligned, higher integration risk for this class |
-| **Microchip ATmega4809-AU (AVR, SMT)** | ![ATmega4809](Chip4.png) | [ATmega4809-AU](https://www.digikey.com/en/products/detail/microchip-technology/ATMEGA4809-AU/10444928) | $1.74 | Common, low cost, plenty of example code | Integration and course support may not match PIC workflow, performance constraints similar to PIC but with different ecosystem |
+| **Espressif ESP32-S3-WROOM-1 (SMT module)** | ![ESP32-S3-WROOM-1](Chip1.png) | https://www.espressif.com/en/products/modules/esp32-s3-wroom-1 | ~$6.00 | Integrated WiFi and Bluetooth, large number of GPIOs, powerful dual-core processor, integrated flash and RF circuitry simplifies hardware design | Slightly higher cost than simple MCUs, requires external programming interface |
+| **Espressif ESP32-WROOM-32 (SMT module)** | ![ESP32-WROOM-32](Chip2.png) | https://www.espressif.com/en/products/modules/esp32-wroom-32 | ~$5.00 | Mature ecosystem, strong community support, similar wireless capabilities | Older architecture, fewer AI and acceleration features than ESP32-S3 |
+| **Raspberry Pi RP2040 Microcontroller** | ![RP2040](Chip3.png) | https://www.raspberrypi.com/products/rp2040/ | ~$1.00 | Very low cost, good performance for embedded control tasks | No integrated wireless connectivity, additional circuitry required |
+| **Microchip PIC18F47K42-I/PT (44-TQFP)** | ![PIC18F47K42](Chip4.png) | https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47K42-I-PT/7561733 | $2.79 | Compatible with Microchip toolchain used in class, reliable peripheral set | Limited performance compared to modern 32-bit microcontrollers |
 
-**Selected:** Microchip PIC18F47K42-I/PT (44-TQFP, SMT).
+**Selected:** Espressif ESP32-S3-WROOM-1 (surface mount module).
 
-**Rationale:** This device is the best fit for my subsystem because it natively supports the exact interfaces needed (SPI for camera, I2C for AS5600, UART for integration) while staying fully aligned with the class Microchip toolchain and programming flow. The selected package is surface mount, matching the project requirement.
+**Rationale:**  
+The ESP32-S3-WROOM-1 module provides a powerful and flexible embedded controller for the Human Interface subsystem. The module includes integrated flash memory, RF circuitry, and a crystal oscillator, reducing the number of required external components. It provides more than enough GPIO and communication peripherals for the subsystem while remaining available as a surface mount module suitable for PCB assembly.
+
+The additional processing capability also provides flexibility for future features such as more advanced UI behavior, data processing, or wireless connectivity.
 
 ---
 
-## In circuit programming and debugging
-**Programmer/debugger:** MPLAB Snap (PG164100).  
+## Programming and Debug Interface
 
-  ![MPLAB Snap](Snap.png)
-  [MPLAB Snap PG164100](https://www.digikey.com/en/products/detail/microchip-technology/PG164100/9562532)
+The ESP32-S3 module is programmed through a **UART programming interface** connected to a standard programming header on the PCB.
 
-**How it connects in the design:**
-- Add an ICSP style programming header on the PCB and route the required programming pins from the PIC to that header.
-- Ensure power and ground are available during programming, and the reset line is handled correctly for programming entry.
+**Programming method:** External USB-to-UART adapter.
+
+![USB UART Adapter](Programmer.png)
+
+Typical adapters include:
+
+- CH340 USB-to-UART
+- CP2102 USB-to-UART
+- FT232 USB-to-UART
+
+**Programming header signals:**
+
+- 3V3
+- GND
+- TXD0
+- RXD0
+- EN (reset)
+- BOOT (GPIO0)
+
+These signals allow the ESP32 to enter firmware download mode and receive firmware through the UART interface.
 
 ---
 
 ## Microcontroller peripherals used in my subsystem
-- **SPI1:** Camera module interface (SCK, SDO, SDI, CS)
-- **I2C1:** AS5600 angle sensor interface (SCL, SDA)
-- **UART1:** Team integration or debug interface (TX, RX)
-- **GPIO:** Trigger input, LED output, reset control line (as shown in my diagram)
+
+The ESP32-S3 uses the following peripherals for the Human Interface subsystem:
+
+**I2C Interface**
+- Used to communicate with the SSD1306 OLED display
+- Signals: SDA, SCL
+
+**UART Interface**
+- Used for programming and debugging
+- Signals: TXD0, RXD0
+
+**GPIO**
+Used for system interaction and user feedback:
+
+- Push button inputs
+- Status LED output
+- Reset (EN) control
+- Boot mode selection (GPIO0)
+- Expansion header GPIO lines for future peripherals
+
+---
+
+## Expansion and Integration
+
+The subsystem includes expansion headers connected to several ESP32 GPIO pins. These allow additional peripherals or sensors to be added without redesigning the PCB.
+
+Expansion header signals include:
+
+- 3V3
+- GND
+- I2C (SDA, SCL)
+- Several general purpose GPIO pins
