@@ -8,52 +8,67 @@ tags:
 # Component Selection
 **Team 304 - Camera and Angle Sensing Subsystem**
 
-This page covers all major components in my subsystem (camera capture, angle sensing, and user indication). All options below are intended to be compatible with a PIC18-class microcontroller design and meet the course preference for surface mount parts, with the note that some camera solutions are sold as small modules that connect through headers/connectors (headers/connectors are allowed exceptions).
+This page covers all major components in my subsystem including the embedded controller, power regulation, user interface display, and status indication. All options below follow the course preference for surface mount components where possible. Some interface devices (camera modules and displays) are provided as small modules that connect through headers, which are allowed exceptions.
 
 ---
 
-## Camera Module
+## Embedded Controller (ESP32 Module)
 
 | Option | Photo | Vendor link | Unit cost | Pros | Cons |
 |---|---|---|---:|---|---|
-| **ArduCAM Mini 2MP Plus (OV2640, SPI)** | ![ArduCAM Mini 2MP Plus OV2640](Image1.png) | [ArduCAM Mini 2MP Plus OV2640](https://www.arducam.com/arducam-2mp-spi-camera-b0067-arduino.html) | $25.99 | Lower cost, proven SPI camera approach, good resolution for embedded capture | Camera is a module (not a single SMT IC), frame rate depends on SPI speed and processing |
-| **ArduCAM Mega 5MP SPI Camera (autofocus)** | ![ArduCAM Mega 5MP SPI Autofocus](Image2.png) | [ArduCAM Mega 5MP](https://www.arducam.com/presale-mega-5mp-color-rolling-shutter-camera-module-with-autofocus-lens-for-any-microcontroller.html) | $34.99 | Higher resolution, autofocus, designed to be easy to use over SPI with high level commands | Still a module, higher complexity than 2MP option, cost higher than 2MP |
-| **ArduCAM 5MP Plus OV5642 (SPI) from SparkFun** | ![ArduCAM 5MP Plus OV5642](Image3.png) | [SparkFun OV5642](https://www.sparkfun.com/arducam-5mp-plus-ov5642-mini-camera-module.html) | $72.95 | Strong vendor documentation, reputable distributor option, higher resolution than 2MP | Highest cost, still a module, may be more camera than needed for project requirements |
+| **ESP32-S3-WROOM-1 Module** | ![ESP32-S3-WROOM-1](Image1.png) | https://www.espressif.com/en/products/modules/esp32-s3-wroom-1 | ~$6.00 | Surface mount module, integrated WiFi and Bluetooth, large GPIO count, widely supported | Requires external programming interface |
+| **ESP32-WROOM-32 Module** | ![ESP32-WROOM-32](Image2.png) | https://www.espressif.com/en/products/modules/esp32-wroom-32 | ~$5.00 | Mature ecosystem, well documented, simple integration | Older architecture, fewer AI features than S3 |
+| **RP2040 Microcontroller** | ![RP2040](Image3.png) | https://www.raspberrypi.com/products/rp2040/ | ~$1.00 | Very low cost, strong community support | No built-in wireless connectivity |
 
+**Selected:** Option A – ESP32-S3-WROOM-1.
 
-**Selected:** Option A - ArduCAM Mini 2MP Plus (OV2640, SPI).  
-**Rationale:** It best fits the typical embedded constraints for EGR314: lowest cost among reputable, SPI based interface that works well with PIC peripherals, and enough resolution for detection/recording while keeping integration risk manageable compared to higher end camera modules.
+**Rationale:**  
+The ESP32-S3-WROOM module provides integrated wireless capability, sufficient GPIO for subsystem integration, and is available as a surface mount module compatible with PCB assembly requirements. It also includes onboard flash, RF matching, and crystal oscillator which simplifies the hardware design.
 
 ---
 
-## Angle Sensor Module
+## Power Regulation (Switching Regulator)
 
 | Option | Photo | Vendor link | Unit cost | Pros | Cons |
 |---|---|---|---:|---|---|
-| **ams AS5600 (I2C programmable magnetic angle sensor)** | ![AS5600](Image4.png) | [AS5600](https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5600-position-sensor) | $3.17 | Low cost, common in hobby and embedded, I2C support for configuration, good match to my block diagram | Requires magnet alignment and mechanical fixture, resolution lower than some higher end encoders |
-| **ams AS5048A (SPI, 14-bit) or AS5048B (I2C, 14-bit)** | ![AS5048](Image5.png) | [AS5048](https://www.digikey.com/en/product-highlight/a/ams/as5048-magnetic-rotary-encoder) | $7.90 | Higher resolution, strong accuracy and robustness, SPI or I2C variants | Higher cost, still needs magnet and good mechanical alignment |
-| **Infineon TLE5012B (magnetic angle sensor)** | ![TLE5012B](Image6.png) | [TLE5012B](https://www.digikey.com/en/products/detail/infineon-technologies/TLE5012BDE1200XUMA1/5960665) | $5.79 | Reputable industrial sensor option, good performance | Different integration details than AS5600, cost higher than AS5600 |
+| **Diodes Inc. AP63203WU Buck Converter** | ![AP63203](Image4.png) | https://www.diodes.com/part/view/AP63203WU | ~$0.90 | High efficiency switching regulator, compact SOT563 package, supports up to 32V input | Slightly more complex layout than linear regulators |
+| **LM1117 Linear Regulator (3.3V)** | ![LM1117](Image5.png) | https://www.ti.com/product/LM1117 | ~$0.60 | Very simple design and minimal components | Low efficiency with large input voltage difference |
+| **MP1584 Buck Regulator** | ![MP1584](Image6.png) | https://www.monolithicpower.com/en/mp1584.html | ~$1.50 | High current capability and efficient switching | Larger package footprint |
 
+**Selected:** Option A – AP63203WU Switching Regulator.
 
-**Selected:** Option A - AS5600 (I2C).  
-**Rationale:** Lowest cost, simplest integration, matches the I2C angle sensing block in my diagram, and meets project needs without over optimizing resolution.
+**Rationale:**  
+The subsystem receives 9–12V from the barrel jack input. The AP63203 efficiently steps this voltage down to 3.3V required by the ESP32 module while minimizing heat dissipation compared to linear regulators. Its compact surface mount package also fits well within PCB space constraints.
 
 ---
 
-## Magnet and Mounting Hardware (Module)
-
-The AS5600 class sensors require a diametrically magnetized magnet and a stable mount to maintain air gap and alignment.
-
-### Candidate solutions (at least 3)
+## OLED Display Module (User Interface)
 
 | Option | Photo | Vendor link | Unit cost | Pros | Cons |
 |---|---|---|---:|---|---|
-| **ams RMH05-DK-XX-1.0 magnet holder (mechanical accessory)** | ![RMH05 Magnet Holder](Image7.png) | [RMH05](https://www.digikey.com/en/products/detail/ams-osram-usa-inc/RMH05-DK-XX-1-0/3712276) | $6.83 | Purpose built mechanical alignment aid, reduces mounting risk | Adds cost, may not match our exact mechanical geometry |
-| **Custom 3D printed mount + diametric magnet** | N/A | N/A | varies | Cheapest and most flexible for our mechanical layout | Requires careful iteration, print tolerance and magnet sourcing |
-| **Higher integration angle sensor package with more robust mechanical tolerance plus simple magnet mount** | N/A | [AS5048](https://www.digikey.com/en/product-highlight/a/ams/as5048-magnetic-rotary-encoder) | Sensor cost plus magnet | Better tolerance and accuracy, still simple conceptually | Higher total cost, still needs a magnet solution |
+| **SSD1306 0.96" I2C OLED Display** | ![SSD1306 OLED](Image7.png) | https://www.adafruit.com/product/326 | ~$5.00 | Simple I2C interface, low power, widely used library support | Monochrome display |
+| **1.3" SH1106 OLED Display** | ![SH1106 OLED](Image8.png) | https://www.waveshare.com/1.3inch-oled-module.htm | ~$7.00 | Slightly larger display area | Different driver and library requirements |
+| **ST7735 SPI TFT Display** | ![ST7735 TFT](Image9.png) | https://www.adafruit.com/product/358 | ~$10.00 | Full color graphics capability | Higher power consumption and more pins required |
 
-**Selected: Option B - Custom 3D printed mount + magnet.**  
-**Rationale:** Most compatible with student project mechanical constraints, flexible for mounting near the subsystem shaft, and avoids buying a holder that may not match our form factor.
+**Selected:** Option A – SSD1306 0.96" I2C OLED Display.
+
+**Rationale:**  
+The SSD1306 OLED display provides a compact and easy-to-integrate interface using the I2C bus already available on the ESP32. It allows simple status messages and system feedback without requiring many microcontroller pins.
+
+---
+
+## Programming Interface (USB to UART)
+
+| Option | Photo | Vendor link | Unit cost | Pros | Cons |
+|---|---|---|---:|---|---|
+| **CP2102 USB-to-UART Adapter** | ![CP2102](Image10.png) | https://www.silabs.com/interface/usb-bridges/classic/device.cp2102 | ~$3.00 | Reliable USB serial interface commonly used with ESP32 | Requires external module |
+| **FT232RL USB-to-UART Adapter** | ![FT232RL](Image11.png) | https://ftdichip.com/products/ft232rl/ | ~$4.00 | Very reliable and well supported drivers | Higher cost |
+| **CH340 USB-to-UART Adapter** | ![CH340](Image12.png) | https://www.wch-ic.com/products/CH340.html | ~$2.00 | Lowest cost option | Driver installation sometimes required |
+
+**Selected:** Option C – CH340 USB-to-UART Adapter.
+
+**Rationale:**  
+The CH340 USB-to-UART interface allows programming of the ESP32 through a simple 6-pin programming header while keeping the PCB design simple. Using an external adapter reduces PCB complexity and is common in embedded development boards.
 
 ---
 
@@ -61,12 +76,11 @@ The AS5600 class sensors require a diametrically magnetized magnet and a stable 
 
 | Option | Photo | Vendor link | Unit cost | Pros | Cons |
 |---|---|---|---:|---|---|
-| **Kingbright AP2012EC (0805 red LED)** | ![AP2012EC](Image8.png) | [DigiKey AP2012EC red 0805 LED](https://www.digikey.com/en/products/detail/kingbright/AP2012EC/2658844) | varies by qty | Meets SMT requirement, simple GPIO drive, easy placement | Requires current limiting (handled in schematic stage) |
-| **Single Color LED Ultra Red 660 nm Water Clear** | ![0805 LED category](Image9.png) | [Single Color LEDs Ultra Red 660 nm Water Clear](https://www.mouser.com/ProductDetail/Bivar/SM0805URC?qs=hWDdE2Pc5RBc6Sbhf77jsQ%3D%3D&srsltid=AfmBOopeXy8JRdC2HAgqY_1hTAScqM53Gh0NaHuSJ8B_5eJW4_7dcizT) | $0.30 | Many choices for brightness and lens type, easy to source | Must pick final part number later |
-| **LED BLUE/RED CLEAR 2012 SMD** | ![LED BLUE/RED CLEAR 2012 SMD](Image10.png) | [LED BLUE/RED CLEAR 2012 SMD](https://www.digikey.com/en/products/detail/kingbright/APHBM2012QBDSURKC/2263566) | varies | Allows multiple states without extra LEDs | More pins and firmware complexity |
+| **Kingbright AP2012EC (0805 red LED)** | ![AP2012EC](Image13.png) | https://www.digikey.com/en/products/detail/kingbright/AP2012EC/2658844 | ~$0.10 | Small SMT package, simple GPIO control, low cost | Single color only |
+| **Bi-color LED (Red/Green)** | ![BiColor LED](Image14.png) | https://www.digikey.com/en/products/detail/kingbright/APHBM2012QBDSURKC | ~$0.25 | Can indicate multiple states | Requires additional GPIO control |
+| **RGB LED (SMD)** | ![RGB LED](Image15.png) | https://www.digikey.com/en/products/detail/kingbright/APTF2012LSEEZGKQBKC | ~$0.50 | Full color indication | Requires multiple control pins |
 
+**Selected:** Option A – Kingbright AP2012EC (0805 red LED).
 
-**Selected:** Option A - Kingbright AP2012EC (0805 red LED).
-
-**Rationale:** Simple, common, SMT compliant, and matches the block diagram need for a basic status indicator.
-
+**Rationale:**  
+A simple single-color LED provides sufficient visual feedback for system status such as power, initialization, or error indication while minimizing circuit complexity.
