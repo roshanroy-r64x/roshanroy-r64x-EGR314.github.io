@@ -644,9 +644,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#in-circuit-programming-and-debugging" class="md-nav__link">
+  <a href="#microcontroller-options" class="md-nav__link">
     <span class="md-ellipsis">
-      In circuit programming and debugging
+      Microcontroller Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming-and-debug-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming and Debug Interface
     </span>
   </a>
   
@@ -656,6 +665,15 @@
   <a href="#microcontroller-peripherals-used-in-my-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
       Microcontroller peripherals used in my subsystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expansion-and-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expansion and Integration
     </span>
   </a>
   
@@ -806,9 +824,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#in-circuit-programming-and-debugging" class="md-nav__link">
+  <a href="#microcontroller-options" class="md-nav__link">
     <span class="md-ellipsis">
-      In circuit programming and debugging
+      Microcontroller Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming-and-debug-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming and Debug Interface
     </span>
   </a>
   
@@ -818,6 +845,15 @@
   <a href="#microcontroller-peripherals-used-in-my-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
       Microcontroller peripherals used in my subsystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expansion-and-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expansion and Integration
     </span>
   </a>
   
@@ -847,14 +883,19 @@
 
 
 <h1 id="microcontroller-selection-evscope">Microcontroller Selection - EVScope</h1>
-<p><strong>Team 304 - Camera and Angle Sensing Subsystem</strong></p>
-<p>This page justifies the microcontroller choice for my subsystem. My subsystem needs:
-- SPI peripheral for camera data/control
-- I2C peripheral for magnetic angle sensor (AS5600)
-- UART for team communications or debug (as required by integration)
-- Several GPIO pins for trigger input, status LED, reset control, and connector signals
-- In circuit programming and debugging support using a Snap programmer</p>
+<p><strong>Team 304 - Human Interface / UI Subsystem</strong></p>
+<p>This page justifies the microcontroller choice for the Human Interface / UI subsystem. This subsystem is responsible for managing the display interface, handling user inputs, and communicating status information between the user and the rest of the EVScope system.</p>
+<p>The microcontroller must support the following interfaces and capabilities:</p>
+<ul>
+<li>I2C peripheral for the OLED display interface (SSD1306)</li>
+<li>UART for programming and debug communication</li>
+<li>Several GPIO pins for user input buttons, status LED, and expansion headers</li>
+<li>External programming interface through a UART programming header</li>
+<li>Reliable surface mount package suitable for PCB assembly</li>
+<li>Sufficient processing capability to manage display updates and user input events</li>
+</ul>
 <hr>
+<h2 id="microcontroller-options">Microcontroller Options</h2>
 <table>
 <thead>
 <tr>
@@ -868,56 +909,91 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Microchip PIC18F47K42-I/PT (44-TQFP, SMT)</strong></td>
-<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip1.png" data-desc-position="bottom"><img alt="PIC18F47K42" src="../Chip1.png"></a></td>
-<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47K42-I-PT/7561733">PIC18F47K42-I-PT</a></td>
+<td><strong>Espressif ESP32-S3-WROOM-1 (SMT module)</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip1.png" data-desc-position="bottom"><img alt="ESP32-S3-WROOM-1" src="../Chip1.png"></a></td>
+<td>https://www.espressif.com/en/products/modules/esp32-s3-wroom-1</td>
+<td style="text-align: right;">~$6.00</td>
+<td>Integrated WiFi and Bluetooth, large number of GPIOs, powerful dual-core processor, integrated flash and RF circuitry simplifies hardware design</td>
+<td>Slightly higher cost than simple MCUs, requires external programming interface</td>
+</tr>
+<tr>
+<td><strong>Espressif ESP32-WROOM-32 (SMT module)</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip2.png" data-desc-position="bottom"><img alt="ESP32-WROOM-32" src="../Chip2.png"></a></td>
+<td>https://www.espressif.com/en/products/modules/esp32-wroom-32</td>
+<td style="text-align: right;">~$5.00</td>
+<td>Mature ecosystem, strong community support, similar wireless capabilities</td>
+<td>Older architecture, fewer AI and acceleration features than ESP32-S3</td>
+</tr>
+<tr>
+<td><strong>Raspberry Pi RP2040 Microcontroller</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip3.png" data-desc-position="bottom"><img alt="RP2040" src="../Chip3.png"></a></td>
+<td>https://www.raspberrypi.com/products/rp2040/</td>
+<td style="text-align: right;">~$1.00</td>
+<td>Very low cost, good performance for embedded control tasks</td>
+<td>No integrated wireless connectivity, additional circuitry required</td>
+</tr>
+<tr>
+<td><strong>Microchip PIC18F47K42-I/PT (44-TQFP)</strong></td>
+<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip4.png" data-desc-position="bottom"><img alt="PIC18F47K42" src="../Chip4.png"></a></td>
+<td>https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47K42-I-PT/7561733</td>
 <td style="text-align: right;">$2.79</td>
-<td>Matches course ecosystem, supports SPI, I2C, UART, SMT package, solid documentation, works with MPLAB tools</td>
-<td>8-bit limitations for heavy image processing, must manage bandwidth and buffering carefully</td>
-</tr>
-<tr>
-<td><strong>Microchip PIC18F46K42-I/PT (44-TQFP, SMT)</strong></td>
-<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip2.png" data-desc-position="bottom"><img alt="PIC18F46K42" src="../Chip2.png"></a></td>
-<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F46K42-I-PT/7559457">PIC18F46K42-I-PT</a></td>
-<td style="text-align: right;">$2.54</td>
-<td>Very similar peripheral set, potentially simpler if memory needs are lower</td>
-<td>Less program memory than PIC18F47K42, fewer safety margins for camera libraries and features</td>
-</tr>
-<tr>
-<td><strong>ST STM32G031K8T6 (32-bit, SMT)</strong></td>
-<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip3.png" data-desc-position="bottom"><img alt="STM32G031K8T6" src="../Chip3.png"></a></td>
-<td><a href="https://www.digikey.com/en/products/detail/stmicroelectronics/STM32G031K8T6/10300267">STM32G031K8T6</a></td>
-<td style="text-align: right;">$2.32</td>
-<td>32-bit performance, strong peripheral support, good for higher throughput</td>
-<td>Toolchain and course workflow may be less aligned, higher integration risk for this class</td>
-</tr>
-<tr>
-<td><strong>Microchip ATmega4809-AU (AVR, SMT)</strong></td>
-<td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Chip4.png" data-desc-position="bottom"><img alt="ATmega4809" src="../Chip4.png"></a></td>
-<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/ATMEGA4809-AU/10444928">ATmega4809-AU</a></td>
-<td style="text-align: right;">$1.74</td>
-<td>Common, low cost, plenty of example code</td>
-<td>Integration and course support may not match PIC workflow, performance constraints similar to PIC but with different ecosystem</td>
+<td>Compatible with Microchip toolchain used in class, reliable peripheral set</td>
+<td>Limited performance compared to modern 32-bit microcontrollers</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Selected:</strong> Microchip PIC18F47K42-I/PT (44-TQFP, SMT).</p>
-<p><strong>Rationale:</strong> This device is the best fit for my subsystem because it natively supports the exact interfaces needed (SPI for camera, I2C for AS5600, UART for integration) while staying fully aligned with the class Microchip toolchain and programming flow. The selected package is surface mount, matching the project requirement.</p>
+<p><strong>Selected:</strong> Espressif ESP32-S3-WROOM-1 (surface mount module).</p>
+<p><strong>Rationale:</strong><br>
+The ESP32-S3-WROOM-1 module provides a powerful and flexible embedded controller for the Human Interface subsystem. The module includes integrated flash memory, RF circuitry, and a crystal oscillator, reducing the number of required external components. It provides more than enough GPIO and communication peripherals for the subsystem while remaining available as a surface mount module suitable for PCB assembly.</p>
+<p>The additional processing capability also provides flexibility for future features such as more advanced UI behavior, data processing, or wireless connectivity.</p>
 <hr>
-<h2 id="in-circuit-programming-and-debugging">In circuit programming and debugging</h2>
-<p><strong>Programmer/debugger:</strong> MPLAB Snap (PG164100).  </p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Snap.png" data-desc-position="bottom"><img alt="MPLAB Snap" src="../Snap.png"></a>
-  <a href="https://www.digikey.com/en/products/detail/microchip-technology/PG164100/9562532">MPLAB Snap PG164100</a></p>
-<p><strong>How it connects in the design:</strong>
-- Add an ICSP style programming header on the PCB and route the required programming pins from the PIC to that header.
-- Ensure power and ground are available during programming, and the reset line is handled correctly for programming entry.</p>
+<h2 id="programming-and-debug-interface">Programming and Debug Interface</h2>
+<p>The ESP32-S3 module is programmed through a <strong>UART programming interface</strong> connected to a standard programming header on the PCB.</p>
+<p><strong>Programming method:</strong> External USB-to-UART adapter.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Programmer.png" data-desc-position="bottom"><img alt="USB UART Adapter" src="../Programmer.png"></a></p>
+<p>Typical adapters include:</p>
+<ul>
+<li>CH340 USB-to-UART</li>
+<li>CP2102 USB-to-UART</li>
+<li>FT232 USB-to-UART</li>
+</ul>
+<p><strong>Programming header signals:</strong></p>
+<ul>
+<li>3V3</li>
+<li>GND</li>
+<li>TXD0</li>
+<li>RXD0</li>
+<li>EN (reset)</li>
+<li>BOOT (GPIO0)</li>
+</ul>
+<p>These signals allow the ESP32 to enter firmware download mode and receive firmware through the UART interface.</p>
 <hr>
 <h2 id="microcontroller-peripherals-used-in-my-subsystem">Microcontroller peripherals used in my subsystem</h2>
+<p>The ESP32-S3 uses the following peripherals for the Human Interface subsystem:</p>
+<p><strong>I2C Interface</strong>
+- Used to communicate with the SSD1306 OLED display
+- Signals: SDA, SCL</p>
+<p><strong>UART Interface</strong>
+- Used for programming and debugging
+- Signals: TXD0, RXD0</p>
+<p><strong>GPIO</strong>
+Used for system interaction and user feedback:</p>
 <ul>
-<li><strong>SPI1:</strong> Camera module interface (SCK, SDO, SDI, CS)</li>
-<li><strong>I2C1:</strong> AS5600 angle sensor interface (SCL, SDA)</li>
-<li><strong>UART1:</strong> Team integration or debug interface (TX, RX)</li>
-<li><strong>GPIO:</strong> Trigger input, LED output, reset control line (as shown in my diagram)</li>
+<li>Push button inputs</li>
+<li>Status LED output</li>
+<li>Reset (EN) control</li>
+<li>Boot mode selection (GPIO0)</li>
+<li>Expansion header GPIO lines for future peripherals</li>
+</ul>
+<hr>
+<h2 id="expansion-and-integration">Expansion and Integration</h2>
+<p>The subsystem includes expansion headers connected to several ESP32 GPIO pins. These allow additional peripherals or sensors to be added without redesigning the PCB.</p>
+<p>Expansion header signals include:</p>
+<ul>
+<li>3V3</li>
+<li>GND</li>
+<li>I2C (SDA, SCL)</li>
+<li>Several general purpose GPIO pins</li>
 </ul>
 
 
