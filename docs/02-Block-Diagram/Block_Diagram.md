@@ -4,11 +4,19 @@ title: Block Diagram
 
 # Individual Block Diagram
 
-![text](Block_Diagram.png)
+![text](Block.png)
 
-### Camera and Angle Sensing Subsystem Block Diagram
+## Block Diagram Description
 
-This block diagram shows the camera and angle sensing subsystem for the EVScope project developed by Team 304. The subsystem is centered around a Microchip PIC18F47K42 microcontroller, which coordinates image acquisition, angle measurement, and communication with the rest of the system. A camera module interfaces with the microcontroller using an SPI connection for image data transfer, while configuration and auxiliary control signals are handled internally. A Hall effect angle sensor (AS5600) is connected via an I2C interface to provide precise angular position feedback.
+The Human Interface / UI subsystem provides the primary interaction point between the user and the EVScope system. The central component of the subsystem is the ESP32-S3-WROOM microcontroller module, which manages user inputs, display output, and communication with other system components.
 
-The microcontroller communicates with neighboring subsystems through a UART-based daisy-chain using upstream and downstream 2x4 ribbon cable connectors. Simple digital inputs and outputs are used for external trigger control and visual status indication through an onboard LED. Power is supplied either from an external system power source via the ribbon cable or from a local barrel jack, with the subsystem designed to operate at 3.3 V logic levels. This diagram illustrates the logical organization of the subsystem, signal flow direction, and interface boundaries without specifying component values or pin assignments.
+Power for the subsystem is supplied through a 9–12 V barrel jack input and regulated down to 3.3 V using a switching buck regulator. This regulated 3.3 V rail powers the ESP32 module, OLED display, and other interface components.
+
+User interaction is handled through several push button inputs connected to ESP32 GPIO pins. These buttons allow the user to navigate menus, trigger system functions, or interact with the device during operation. A status indicator LED connected to a GPIO pin provides a simple visual indication of system state, such as power, activity, or error conditions.
+
+System information and feedback are displayed on a small SSD1306 OLED display connected to the ESP32 using the I2C communication interface. This display allows the subsystem to present system status, configuration information, and user prompts.
+
+Programming and debugging of the ESP32 are supported through a dedicated UART programming header that connects to an external USB-to-UART adapter. This allows firmware to be uploaded and debug messages to be monitored during development and testing.
+
+Additional GPIO pins are routed to expansion headers to support future peripherals or debugging connections. These headers provide access to power, ground, I2C signals, and general-purpose input/output pins for flexible subsystem integration.
 
