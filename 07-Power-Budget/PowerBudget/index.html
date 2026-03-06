@@ -1041,7 +1041,7 @@ The subsystem is powered from a 9–12 V input that is converted to 3.3 V using 
 <hr>
 <h1 id="estimated-input-power-12-v-source">Estimated Input Power (12 V Source)</h1>
 <p>The AP63203 buck regulator is used to convert 9–12 V to 3.3 V.<br>
-Assuming an approximate <strong>88% regulator efficiency</strong>, the estimated input current from a 12 V supply is:</p>
+Assuming an approximate 88% regulator efficiency, the estimated input current from a 12 V supply is:</p>
 <table>
 <thead>
 <tr>
@@ -1068,7 +1068,7 @@ Assuming an approximate <strong>88% regulator efficiency</strong>, the estimated
 </table>
 <hr>
 <h1 id="conclusions">Conclusions</h1>
-<p>The Human Interface / UI Subsystem requires approximately <strong>60 mA during typical operation</strong> and may reach up to <strong>385 mA in a worst-case scenario</strong> when the ESP32 is operating at peak load.</p>
+<p>The Human Interface / UI Subsystem requires approximately 60 mA during typical operation and may reach up to 385 mA in a worst-case scenario when the ESP32 is operating at peak load.</p>
 <p>This current level is within the expected operating range of the ESP32-S3 power requirements and the AP63203 switching regulator. The subsystem therefore operates safely within the available power limits.</p>
 <p>Because the OLED display and status LED have relatively low power consumption, the ESP32 microcontroller represents the largest contributor to subsystem power usage. If wireless features are disabled or used intermittently, the typical power consumption will remain closer to the lower estimate.</p>
 <hr>

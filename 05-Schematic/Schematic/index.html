@@ -732,6 +732,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schematic-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schematic Specifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -929,6 +944,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schematic-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schematic Specifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -960,6 +990,58 @@
 <p>Below is the overall schematic for the Human Interface/UI Subsystem:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Schematic.png" data-desc-position="bottom"><img alt="Schematic" src="../Schematic.png"></a></p>
 <p>This is the PDF file of the schematic: <a href="../Schematic.pdf">Schematic</a></p>
+<h3 id="schematic-specifications">Schematic Specifications</h3>
+<p>Resistors</p>
+<ul>
+<li>
+<p>10 kΩ pull-ups for EN, BOOT, and buttons</p>
+</li>
+<li>
+<p>4.7 kΩ pull-ups for I2C SDA/SCL</p>
+</li>
+<li>
+<p>330 Ω current-limiting resistor for status LED</p>
+</li>
+<li>
+<p>Tolerance: 1%</p>
+</li>
+<li>
+<p>Power rating: 1/8 W</p>
+</li>
+</ul>
+<p>Capacitors</p>
+<ul>
+<li>
+<p>10 µF input cap, ceramic, 16 V minimum</p>
+</li>
+<li>
+<p>22 µF output cap, ceramic, 6.3 V minimum</p>
+</li>
+<li>
+<p>0.1 µF bootstrap cap, ceramic, 16 V minimum</p>
+</li>
+<li>
+<p>0.1 µF decoupling caps, ceramic, 6.3 V minimum</p>
+</li>
+</ul>
+<p>Fuse</p>
+<ul>
+<li>
+<p>0.5 A to 1 A input protection fuse</p>
+</li>
+<li>
+<p>Polyfuse preferred for convenience</p>
+</li>
+</ul>
+<p>Inductor</p>
+<ul>
+<li>
+<p>2.2 µH</p>
+</li>
+<li>
+<p>Less than 1 A saturation current</p>
+</li>
+</ul>
 
 
 
