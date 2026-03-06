@@ -41,7 +41,7 @@ The goal of this power budget is to verify that the subsystem can operate safely
 # Estimated Input Power (12 V Source)
 
 The AP63203 buck regulator is used to convert 9–12 V to 3.3 V.  
-Assuming an approximate **88% regulator efficiency**, the estimated input current from a 12 V supply is:
+Assuming an approximate 88% regulator efficiency, the estimated input current from a 12 V supply is:
 
 | Case | Output Power | Input Power | Input Current @ 12 V |
 |---|---|---|---|
@@ -52,7 +52,7 @@ Assuming an approximate **88% regulator efficiency**, the estimated input curren
 
 # Conclusions
 
-The Human Interface / UI Subsystem requires approximately **60 mA during typical operation** and may reach up to **385 mA in a worst-case scenario** when the ESP32 is operating at peak load.
+The Human Interface / UI Subsystem requires approximately 60 mA during typical operation and may reach up to 385 mA in a worst-case scenario when the ESP32 is operating at peak load.
 
 This current level is within the expected operating range of the ESP32-S3 power requirements and the AP63203 switching regulator. The subsystem therefore operates safely within the available power limits.
 
