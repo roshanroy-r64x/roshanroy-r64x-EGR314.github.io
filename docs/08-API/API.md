@@ -61,6 +61,92 @@ UART communication uses the following message structure along with a signal tran
 
 ![alt text](<Message Structure.png>)
 
+## Message Data Definitions
+
+The following tables define the byte-level structure of the UART messages used by the Human Interface / UI Subsystem. Each table includes the variable name, C data type, valid range recognized by the code, and an example valid message.
+
+
+
+### Message 1: UI Button Event Message
+**Purpose:** Sent from the Human Interface / UI Subsystem to another subsystem when a button is pressed or released.  
+**Total number of bytes:** 3
+
+|                | Byte 1 | Byte 2 | Byte 3 |
+|----------------|--------|--------|--------|
+| Variable Name  | `message_type` | `button_id` | `button_state` |
+| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` |
+| Min Value      | 1 | 1 | 0 |
+| Max Value      | 1 | 4 | 1 |
+| Example        | 1 | 2 | 1 |
+
+**Notes:**
+- `message_type = 1` means "button event"
+- `button_id` identifies which pushbutton generated the event
+- `button_state = 0` means released, `1` means pressed
+
+### Message 2: OLED Display Update Message
+**Purpose:** Received by the Human Interface / UI Subsystem to update the OLED display.  
+**Total number of bytes:** 4
+
+|                | Byte 1 | Byte 2 | Byte 3 | Byte 4 |
+|----------------|--------|--------|--------|--------|
+| Variable Name  | `message_type` | `screen_id` | `status_code` | `value` |
+| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` | `int8_t` |
+| Min Value      | 2 | 0 | 0 | -100 |
+| Max Value      | 2 | 9 | 9 | 100 |
+| Example        | 2 | 1 | 3 | 25 |
+
+**Notes:**
+- `message_type = 2` identifies an OLED display update message
+- `screen_id` selects which screen layout is displayed
+- `status_code` determines the type of message shown
+- `value` is a signed numeric value displayed on the screen
+
+### Message 3: Status LED Control Message
+**Purpose:** Received by the Human Interface / UI Subsystem to control the status LED.  
+**Total number of bytes:** 3
+
+|                | Byte 1 | Byte 2 | Byte 3 |
+|----------------|--------|--------|--------|
+| Variable Name  | `message_type` | `led_mode` | `led_state` |
+| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` |
+| Min Value      | 3 | 0 | 0 |
+| Max Value      | 3 | 2 | 1 |
+| Example        | 3 | 1 | 1 |
+
+**Notes:**
+- `message_type = 3` identifies an LED control message
+- `led_mode` determines the LED behavior  
+  - `0` = solid  
+  - `1` = blinking  
+  - `2` = error indication
+- `led_state` determines whether the LED is on or off  
+  - `0` = off  
+  - `1` = on  
+
+### Message 4: Heartbeat / UI Alive Message
+**Purpose:** Sent periodically from the Human Interface / UI Subsystem to indicate that the subsystem is operating correctly.  
+**Total number of bytes:** 3
+
+|                | Byte 1 | Byte 2 | Byte 3 |
+|----------------|--------|--------|--------|
+| Variable Name  | `message_type` | `ui_status` | `error_code` |
+| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` |
+| Min Value      | 4 | 0 | 0 |
+| Max Value      | 4 | 1 | 9 |
+| Example        | 4 | 1 | 0 |
+
+**Notes:**
+- `message_type = 4` identifies a heartbeat message
+- `ui_status` indicates subsystem health  
+  - `0` = subsystem fault  
+  - `1` = subsystem operating normally
+- `error_code` reports any subsystem error condition  
+  - `0` = no error  
+  - `1–9` = specific subsystem error codes
+
+
+
 When a valid message is received:
 
 1. The start byte is detected.
