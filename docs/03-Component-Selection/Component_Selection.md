@@ -84,3 +84,39 @@ The CH340 USB-to-UART interface allows programming of the ESP32 through a simple
 
 **Rationale:**  
 A simple single-color LED provides sufficient visual feedback for system status such as power, initialization, or error indication while minimizing circuit complexity.
+
+## Final Major Components Summary
+
+The table below summarizes the final major components selected for the Human Interface / UI Subsystem. Passive components, pushbuttons, and other minor elements are not included.
+
+| Component Category | Selected Component | Description | Key Reason for Selection |
+|---|---|---|---|
+| Embedded Controller | ESP32-S3-WROOM-1 | Microcontroller module with integrated WiFi and Bluetooth | High performance, integrated wireless capability, large GPIO availability |
+| Power Regulation | AP63203WU Buck Converter | Switching regulator converting 9–12V to 3.3V | High efficiency, reduced heat dissipation, compact size |
+| User Interface Display | SSD1306 0.96" OLED | I2C-based monochrome display module | Low power consumption, simple interface, minimal pin usage |
+| Programming Interface | CH340 USB-to-UART Adapter | External USB-to-serial communication interface | Low cost, widely used, simple programming solution |
+| Status Indicator | Kingbright AP2012EC LED | Single-color SMT LED for system feedback | Simple implementation, low cost, minimal hardware complexity |
+
+---
+
+## ESP32 Pinout Table
+
+The following table lists all ESP32 pins used in the Human Interface / UI Subsystem along with their functions and direction.
+
+| ESP32 Pin | Signal Name | Direction | Function |
+|---|---|---|---|
+| GPIO17 | UART TX | Output | Sends UART messages to motor subsystem (Quinn) |
+| GPIO16 | UART RX | Input | Receives UART messages from WiFi subsystem (Dylan) |
+| GPIO22 | I2C SCL | Output | OLED display clock line |
+| GPIO21 | I2C SDA | Bi-directional | OLED display data line |
+| GPIO19 | Button 1 | Input | User input (Forward / UP command) |
+| GPIO23 | Button 2 | Input | User input (Reverse / DOWN command) |
+| GPIO5 | Button 3 | Input | LED ON control input |
+| GPIO18 | Button 4 | Input | LED OFF control input |
+| GPIO2 | Status LED | Output | Indicates system state and activity |
+| 3V3 | Power | Power | Supplies regulated 3.3V to subsystem components |
+| GND | Ground | Ground | Common ground reference |
+| EN | Enable | Input | Chip enable and reset control |
+| IO0 (BOOT) | Boot | Input | Used to enter programming mode |
+
+All GPIO pins operate at 3.3V logic levels and are compatible with connected peripherals and subsystem interfaces.

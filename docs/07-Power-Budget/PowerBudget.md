@@ -50,13 +50,23 @@ Assuming an approximate 88% regulator efficiency, the estimated input current fr
 
 ---
 
-# Conclusions
+## Power Budget Analysis and Conclusions
 
-The Human Interface / UI Subsystem requires approximately 60 mA during typical operation and may reach up to 385 mA in a worst-case scenario when the ESP32 is operating at peak load.
+The power budget was developed by first identifying all components powered by the 3.3 V rail and extracting their typical and peak current values from their respective datasheets. For each component, power consumption was calculated using the relationship:
 
-This current level is within the expected operating range of the ESP32-S3 power requirements and the AP63203 switching regulator. The subsystem therefore operates safely within the available power limits.
+P = V × I
 
-Because the OLED display and status LED have relatively low power consumption, the ESP32 microcontroller represents the largest contributor to subsystem power usage. If wireless features are disabled or used intermittently, the typical power consumption will remain closer to the lower estimate.
+Using this method, both typical and worst-case power values were determined for each component. These values were then summed to obtain the total subsystem power consumption under normal operation and peak load conditions. This approach ensures that the design accounts not only for average usage but also for transient conditions, such as WiFi transmission bursts from the ESP32, which significantly increase current draw.
+
+The ESP32-S3-WROOM-1 was identified as the dominant contributor to power consumption, particularly under peak conditions where current can reach up to 355 mA. In contrast, the OLED display, LED, and pushbuttons contribute relatively small and predictable loads. This highlights that system power design must primarily accommodate the microcontroller’s dynamic behavior rather than static peripheral loads.
+
+To determine input power requirements, the total output power was adjusted based on the efficiency of the AP63203 buck regulator. By assuming an efficiency of approximately 88%, the input power and current were calculated for both typical and worst-case scenarios. This step is critical because it ensures that the upstream power source and regulator can safely supply sufficient energy without overheating or entering unstable operating regions.
+
+From this analysis, it can be concluded that the subsystem operates well within safe limits of both the regulator and the expected power supply. The peak current requirement of approximately 385 mA on the 3.3 V rail is within the capabilities of the AP63203, and the estimated input current of 120 mA at 12 V is relatively low, indicating efficient power conversion.
+
+Additionally, the power budget confirms that there is margin available for minor expansion, such as additional sensors or interface components, as long as their power consumption remains within reasonable limits. However, any high-power additions, particularly those that operate concurrently with the ESP32 at peak load, would require reevaluation of the power budget.
+
+Overall, the power budget provides confidence that the subsystem is both efficient and stable under expected operating conditions, while also highlighting the importance of designing around worst-case scenarios in embedded systems.
 
 ---
 

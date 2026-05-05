@@ -2,159 +2,157 @@
 title: Message Compliance Verification
 ---
 
-# Message Compliance Verification  
+# Message Compliance Verification
 
-
-
-The purpose of this assignment is to verify that messages transmitted and received within the Human Interface / UI Subsystem comply with the expected communication format and interface requirements. Ensuring proper message formatting and communication timing allows reliable integration with the other subsystems in the team project.
-
-This subsystem is responsible for receiving user inputs, displaying system feedback, and communicating system status using UART.
-
-
+The purpose of this page is to verify that messages transmitted and received by the Human Interface / UI Subsystem follow the team communication format. This subsystem uses the ESP32 to receive WiFi status messages from Dylan's WiFi subsystem, send motor direction commands to Quinn's motor subsystem, and display system status on the OLED.
 
 ## Subsystem Overview
 
 The Human Interface / UI Subsystem consists of:
 
-- ESP32-S3-WROOM-1 microcontroller  
-- SSD1306 OLED display (I2C interface)  
-- Four push button inputs  
-- Status indicator LED  
-- UART communication interface for system messaging  
+- ESP32 microcontroller
+- SSD1306 OLED display using I2C
+- Four pushbutton inputs
+- Status LED
+- UART communication interface
 
-The ESP32-S3 processes user input and communicates with the rest of the system using UART messages.
-
+The ESP32 receives communication messages, validates them, updates the OLED display, and controls whether the user is allowed to operate the system.
 
 ## Communication Interfaces
 
 | Interface | ESP32 Signal | GPIO Pin | Purpose |
-|----------|-------------|---------|--------|
-| UART TX | UART_DOWN | TXD0 (GPIO43) | Sends messages to other subsystems |
-| UART RX | UART_UP | RXD0 (GPIO44) | Receives messages from other subsystems |
-| I2C SCL | SCL | GPIO9 | Clock signal for OLED display |
-| I2C SDA | SDA | GPIO8 | Data signal for OLED display |
-| Button 1 | SW1 | GPIO10 | User input |
-| Button 2 | SW2 | GPIO11 | User input |
-| Button 3 | SW3 | GPIO12 | User input |
-| Button 4 | SW4 | GPIO13 | User input |
-| Status LED | STATUS_LED | GPIO21 | Visual system feedback |
+|----------|-------------|----------|---------|
+| UART TX | UART1 TX | GPIO17 | Sends motor direction commands to Quinn's motor subsystem |
+| UART RX | UART1 RX | GPIO16 | Receives WiFi status and error messages |
+| I2C SCL | SCL | GPIO22 | Clock signal for OLED display |
+| I2C SDA | SDA | GPIO21 | Data signal for OLED display |
+| Button 1 | UP | GPIO19 | User input |
+| Button 2 | DOWN | GPIO23 | User input |
+| Button 3 | LED ON | GPIO5 | User input |
+| Button 4 | LED OFF | GPIO18 | User input |
+| Status LED | LED | GPIO2 | Visual system feedback |
 
-All signals operate at **3.3V logic levels** compatible with the ESP32-S3.
+All signals operate at 3.3V logic levels compatible with the ESP32.
 
+## UART Message Format
 
-## UART Message Timing Diagram
+The team communication protocol uses a simple framed message format:
 
-The following diagram illustrates the structure and timing of UART communication between the Human Interface / UI Subsystem and the rest of the system.
+AZ[Sender ID][Receiver ID][Payload]BY
 
-The ESP32 transmits messages using:
-**UART_DOWN (TXD0 / GPIO43)**
-
-
-and receives messages using:
-**UART_UP (RXD0 / GPIO44)**
-
-
-
-### Message Format
-
-UART communication uses the following message structure along with a signal transmission and reception example (Generated using CHATGPT-5):
-
-![alt text](<Message Structure.png>)
+The message begins with `AZ` and ends with `BY`. The sender and receiver IDs identify which subsystem is communicating, and the payload contains the command or status.
 
 ## Message Data Definitions
 
-The following tables define the byte-level structure of the UART messages used by the Human Interface / UI Subsystem. Each table includes the variable name, C data type, valid range recognized by the code, and an example valid message.
+### WiFi Connected Message
 
+| Field | Value |
+|------|------|
+| Full Message | AZDRYESYB |
+| Sender | D, Dylan WiFi subsystem |
+| Receiver | R, Roshan OLED/UI subsystem |
+| Payload | YES |
+| Meaning | WiFi is connected and system operation is allowed |
 
+System behavior:
+- OLED displays WiFi connected status
+- User inputs and outputs are enabled
 
-### Message 1: UI Button Event Message
-**Purpose:** Sent from the Human Interface / UI Subsystem to another subsystem when a button is pressed or released.  
-**Total number of bytes:** 3
+---
 
-|                | Byte 1 | Byte 2 | Byte 3 |
-|----------------|--------|--------|--------|
-| Variable Name  | `message_type` | `button_id` | `button_state` |
-| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` |
-| Min Value      | 1 | 1 | 0 |
-| Max Value      | 1 | 4 | 1 |
-| Example        | 1 | 2 | 1 |
+### WiFi Disconnected Message
 
-**Notes:**
-- `message_type = 1` means "button event"
-- `button_id` identifies which pushbutton generated the event
-- `button_state = 0` means released, `1` means pressed
+| Field | Value |
+|------|------|
+| Full Message | AZDRNOYB |
+| Sender | D, Dylan WiFi subsystem |
+| Receiver | R, Roshan OLED/UI subsystem |
+| Payload | NO |
+| Meaning | WiFi is not connected and system operation is disabled |
 
-### Message 2: OLED Display Update Message
-**Purpose:** Received by the Human Interface / UI Subsystem to update the OLED display.  
-**Total number of bytes:** 4
+System behavior:
+- OLED displays WiFi disconnected status
+- Outputs are disabled
+- User commands are ignored
 
-|                | Byte 1 | Byte 2 | Byte 3 | Byte 4 |
-|----------------|--------|--------|--------|--------|
-| Variable Name  | `message_type` | `screen_id` | `status_code` | `value` |
-| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` | `int8_t` |
-| Min Value      | 2 | 0 | 0 | -100 |
-| Max Value      | 2 | 9 | 9 | 100 |
-| Example        | 2 | 1 | 3 | 25 |
+---
 
-**Notes:**
-- `message_type = 2` identifies an OLED display update message
-- `screen_id` selects which screen layout is displayed
-- `status_code` determines the type of message shown
-- `value` is a signed numeric value displayed on the screen
+### Motor Forward Command
 
-### Message 3: Status LED Control Message
-**Purpose:** Received by the Human Interface / UI Subsystem to control the status LED.  
-**Total number of bytes:** 3
+| Field | Value |
+|------|------|
+| Example Message | AZRQFORWARDBY |
+| Sender | R, Roshan OLED/UI subsystem |
+| Receiver | Q, Quinn motor subsystem |
+| Payload | FORWARD |
+| Meaning | Command motors to move forward |
 
-|                | Byte 1 | Byte 2 | Byte 3 |
-|----------------|--------|--------|--------|
-| Variable Name  | `message_type` | `led_mode` | `led_state` |
-| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` |
-| Min Value      | 3 | 0 | 0 |
-| Max Value      | 3 | 2 | 1 |
-| Example        | 3 | 1 | 1 |
+System behavior:
+- Sent when user presses forward button
+- Only transmitted if WiFi is connected
 
-**Notes:**
-- `message_type = 3` identifies an LED control message
-- `led_mode` determines the LED behavior  
-  - `0` = solid  
-  - `1` = blinking  
-  - `2` = error indication
-- `led_state` determines whether the LED is on or off  
-  - `0` = off  
-  - `1` = on  
+---
 
-### Message 4: Heartbeat / UI Alive Message
-**Purpose:** Sent periodically from the Human Interface / UI Subsystem to indicate that the subsystem is operating correctly.  
-**Total number of bytes:** 3
+### Motor Reverse Command
 
-|                | Byte 1 | Byte 2 | Byte 3 |
-|----------------|--------|--------|--------|
-| Variable Name  | `message_type` | `ui_status` | `error_code` |
-| Variable Type  | `uint8_t` | `uint8_t` | `uint8_t` |
-| Min Value      | 4 | 0 | 0 |
-| Max Value      | 4 | 1 | 9 |
-| Example        | 4 | 1 | 0 |
+| Field | Value |
+|------|------|
+| Example Message | AZRQREVERSEBY |
+| Sender | R, Roshan OLED/UI subsystem |
+| Receiver | Q, Quinn motor subsystem |
+| Payload | REVERSE |
+| Meaning | Command motors to move in reverse |
 
-**Notes:**
-- `message_type = 4` identifies a heartbeat message
-- `ui_status` indicates subsystem health  
-  - `0` = subsystem fault  
-  - `1` = subsystem operating normally
-- `error_code` reports any subsystem error condition  
-  - `0` = no error  
-  - `1–9` = specific subsystem error codes
+System behavior:
+- Sent when user presses reverse button
+- Only transmitted if WiFi is connected
 
+---
 
+### Error Message
 
-When a valid message is received:
+| Field | Value |
+|------|------|
+| Example Message | Any message containing ERROR |
+| Payload | ERROR |
+| Meaning | A subsystem has detected an error |
 
-1. The start byte is detected.
-2. The message type is identified.
-3. The data payload is processed.
-4. The checksum is verified.
-5. The message is accepted if the checksum is correct.
+System behavior:
+- OLED displays ERROR
+- System ignores the message
+- Outputs remain disabled or unchanged
 
-If the checksum or message format is invalid, the message is discarded.
+---
 
-This message structure ensures reliable communication between subsystems while preventing corrupted data from affecting system operation.
+## Message Validation Process
+
+When a UART message is received:
+
+1. The ESP32 reads the incoming UART data  
+2. The system checks if the message contains ERROR  
+3. The system checks if the message matches known valid messages  
+4. If the message is AZDRYESYB, WiFi is set to connected  
+5. If the message is AZDRNOYB, WiFi is set to disconnected  
+6. If the message is invalid, OLED displays INVALID  
+7. The OLED updates to reflect the current system state  
+
+---
+
+## System Behavior Summary
+
+| Received Message | OLED Output | System Action |
+|----------------|------------|--------------|
+| AZDRYESYB | WiFi Connected | Enable operation |
+| AZDRNOYB | WiFi Disconnected | Disable operation |
+| Contains ERROR | ERROR | Ignore message |
+| Invalid message | INVALID | Ignore message |
+
+---
+
+## Compliance Summary
+
+This communication format satisfies the team API requirements by defining a clear structure for all messages. Each message contains a sender, receiver, and payload, allowing the system to interpret commands consistently.
+
+The subsystem does not respond to arbitrary UART data. Instead, it validates all messages before taking action. This ensures reliable communication between the WiFi subsystem, motor subsystem, and user interface subsystem.
+
+This design improves system safety, prevents unintended behavior, and ensures that the user receives accurate and real-time feedback through the OLED display.

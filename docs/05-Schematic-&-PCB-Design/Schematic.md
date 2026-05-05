@@ -45,3 +45,12 @@ Inductor
 * 2.2 µH
 
 * Less than 1 A saturation current
+
+### Schematic and PCB Zip File
+
+Here is the zip file: [Human Interface Subsystem](<EGR 314.zip>)
+
+### PCB Images
+
+![Front](PCB_Front.png)
+![Back](PCB_Back.png)
