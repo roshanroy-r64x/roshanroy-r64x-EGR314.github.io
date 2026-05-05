@@ -299,12 +299,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../05-Schematic/Schematic/" class="md-tabs__link">
+        <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-tabs__link">
           
   
     
   
-  05 Schematic
+  05 Schematic &amp; PCB Design
 
         </a>
       </li>
@@ -367,6 +367,66 @@
     
   
   08 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-tabs__link">
+          
+  
+    
+  
+  09 Hardware V2.0
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10-Resources/Resources/" class="md-tabs__link">
+          
+  
+    
+  
+  10 Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../11-Reflection/Reflection/" class="md-tabs__link">
+          
+  
+    
+  
+  11 Reflection
 
         </a>
       </li>
@@ -675,11 +735,11 @@
         
   
   
-    <a href="../../05-Schematic/Schematic/" class="md-nav__link">
+    <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    05 Schematic
+    05 Schematic &amp; PCB Design
   </span>
   
 
@@ -922,6 +982,144 @@
     
       
         
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    09 Hardware V2.0
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-Resources/Resources/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10 Resources
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-Reflection/Reflection/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11 Reflection
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
           
         
       
@@ -1133,10 +1331,15 @@ Assuming an approximate 88% regulator efficiency, the estimated input current fr
 </tbody>
 </table>
 <hr>
-<h1 id="conclusions">Conclusions</h1>
-<p>The Human Interface / UI Subsystem requires approximately 60 mA during typical operation and may reach up to 385 mA in a worst-case scenario when the ESP32 is operating at peak load.</p>
-<p>This current level is within the expected operating range of the ESP32-S3 power requirements and the AP63203 switching regulator. The subsystem therefore operates safely within the available power limits.</p>
-<p>Because the OLED display and status LED have relatively low power consumption, the ESP32 microcontroller represents the largest contributor to subsystem power usage. If wireless features are disabled or used intermittently, the typical power consumption will remain closer to the lower estimate.</p>
+<h2 id="power-budget-analysis-and-conclusions">Power Budget Analysis and Conclusions</h2>
+<p>The power budget was developed by first identifying all components powered by the 3.3 V rail and extracting their typical and peak current values from their respective datasheets. For each component, power consumption was calculated using the relationship:</p>
+<p>P = V × I</p>
+<p>Using this method, both typical and worst-case power values were determined for each component. These values were then summed to obtain the total subsystem power consumption under normal operation and peak load conditions. This approach ensures that the design accounts not only for average usage but also for transient conditions, such as WiFi transmission bursts from the ESP32, which significantly increase current draw.</p>
+<p>The ESP32-S3-WROOM-1 was identified as the dominant contributor to power consumption, particularly under peak conditions where current can reach up to 355 mA. In contrast, the OLED display, LED, and pushbuttons contribute relatively small and predictable loads. This highlights that system power design must primarily accommodate the microcontroller’s dynamic behavior rather than static peripheral loads.</p>
+<p>To determine input power requirements, the total output power was adjusted based on the efficiency of the AP63203 buck regulator. By assuming an efficiency of approximately 88%, the input power and current were calculated for both typical and worst-case scenarios. This step is critical because it ensures that the upstream power source and regulator can safely supply sufficient energy without overheating or entering unstable operating regions.</p>
+<p>From this analysis, it can be concluded that the subsystem operates well within safe limits of both the regulator and the expected power supply. The peak current requirement of approximately 385 mA on the 3.3 V rail is within the capabilities of the AP63203, and the estimated input current of 120 mA at 12 V is relatively low, indicating efficient power conversion.</p>
+<p>Additionally, the power budget confirms that there is margin available for minor expansion, such as additional sensors or interface components, as long as their power consumption remains within reasonable limits. However, any high-power additions, particularly those that operate concurrently with the ESP32 at peak load, would require reevaluation of the power budget.</p>
+<p>Overall, the power budget provides confidence that the subsystem is both efficient and stable under expected operating conditions, while also highlighting the importance of designing around worst-case scenarios in embedded systems.</p>
 <hr>
 <h1 id="datasheet-references">Datasheet References</h1>
 <ul>

@@ -15,7 +15,7 @@
         <link rel="prev" href="../../07-Power-Budget/PowerBudget/">
       
       
-        <link rel="next" href="../../Appendix/">
+        <link rel="next" href="../../09-Hardware-V2.0/HardwareV2.0/">
       
       
       <link rel="icon" href="../../static/logo304.png">
@@ -299,12 +299,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../05-Schematic/Schematic/" class="md-tabs__link">
+        <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-tabs__link">
           
   
     
   
-  05 Schematic
+  05 Schematic &amp; PCB Design
 
         </a>
       </li>
@@ -367,6 +367,66 @@
     
   
   08 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-tabs__link">
+          
+  
+    
+  
+  09 Hardware V2.0
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10-Resources/Resources/" class="md-tabs__link">
+          
+  
+    
+  
+  10 Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../11-Reflection/Reflection/" class="md-tabs__link">
+          
+  
+    
+  
+  11 Reflection
 
         </a>
       </li>
@@ -675,11 +735,11 @@
         
   
   
-    <a href="../../05-Schematic/Schematic/" class="md-nav__link">
+    <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    05 Schematic
+    05 Schematic &amp; PCB Design
   </span>
   
 
@@ -906,26 +966,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#uart-message-timing-diagram" class="md-nav__link">
+  <a href="#uart-message-format" class="md-nav__link">
     <span class="md-ellipsis">
-      UART Message Timing Diagram
+      UART Message Format
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="UART Message Timing Diagram">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#message-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Format
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -940,36 +985,45 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#message-1-ui-button-event-message" class="md-nav__link">
+  <a href="#wifi-connected-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 1: UI Button Event Message
+      WiFi Connected Message
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-2-oled-display-update-message" class="md-nav__link">
+  <a href="#wifi-disconnected-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 2: OLED Display Update Message
+      WiFi Disconnected Message
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-3-status-led-control-message" class="md-nav__link">
+  <a href="#motor-forward-command" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 3: Status LED Control Message
+      Motor Forward Command
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-4-heartbeat-ui-alive-message" class="md-nav__link">
+  <a href="#motor-reverse-command" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 4: Heartbeat / UI Alive Message
+      Motor Reverse Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Message
     </span>
   </a>
   
@@ -977,6 +1031,33 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-validation-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Validation Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-behavior-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Behavior Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliance-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance Summary
+    </span>
+  </a>
   
 </li>
       
@@ -991,6 +1072,144 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    09 Hardware V2.0
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-Resources/Resources/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10 Resources
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-Reflection/Reflection/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11 Reflection
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -1097,26 +1316,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#uart-message-timing-diagram" class="md-nav__link">
+  <a href="#uart-message-format" class="md-nav__link">
     <span class="md-ellipsis">
-      UART Message Timing Diagram
+      UART Message Format
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="UART Message Timing Diagram">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#message-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Format
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1131,36 +1335,45 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#message-1-ui-button-event-message" class="md-nav__link">
+  <a href="#wifi-connected-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 1: UI Button Event Message
+      WiFi Connected Message
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-2-oled-display-update-message" class="md-nav__link">
+  <a href="#wifi-disconnected-message" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 2: OLED Display Update Message
+      WiFi Disconnected Message
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-3-status-led-control-message" class="md-nav__link">
+  <a href="#motor-forward-command" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 3: Status LED Control Message
+      Motor Forward Command
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-4-heartbeat-ui-alive-message" class="md-nav__link">
+  <a href="#motor-reverse-command" class="md-nav__link">
     <span class="md-ellipsis">
-      Message 4: Heartbeat / UI Alive Message
+      Motor Reverse Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Message
     </span>
   </a>
   
@@ -1168,6 +1381,33 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-validation-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Validation Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-behavior-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Behavior Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliance-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance Summary
+    </span>
+  </a>
   
 </li>
       
@@ -1195,18 +1435,17 @@
 
 
 <h1 id="message-compliance-verification">Message Compliance Verification</h1>
-<p>The purpose of this assignment is to verify that messages transmitted and received within the Human Interface / UI Subsystem comply with the expected communication format and interface requirements. Ensuring proper message formatting and communication timing allows reliable integration with the other subsystems in the team project.</p>
-<p>This subsystem is responsible for receiving user inputs, displaying system feedback, and communicating system status using UART.</p>
+<p>The purpose of this page is to verify that messages transmitted and received by the Human Interface / UI Subsystem follow the team communication format. This subsystem uses the ESP32 to receive WiFi status messages from Dylan's WiFi subsystem, send motor direction commands to Quinn's motor subsystem, and display system status on the OLED.</p>
 <h2 id="subsystem-overview">Subsystem Overview</h2>
 <p>The Human Interface / UI Subsystem consists of:</p>
 <ul>
-<li>ESP32-S3-WROOM-1 microcontroller  </li>
-<li>SSD1306 OLED display (I2C interface)  </li>
-<li>Four push button inputs  </li>
-<li>Status indicator LED  </li>
-<li>UART communication interface for system messaging  </li>
+<li>ESP32 microcontroller</li>
+<li>SSD1306 OLED display using I2C</li>
+<li>Four pushbutton inputs</li>
+<li>Status LED</li>
+<li>UART communication interface</li>
 </ul>
-<p>The ESP32-S3 processes user input and communicates with the rest of the system using UART messages.</p>
+<p>The ESP32 receives communication messages, validates them, updates the OLED display, and controls whether the user is allowed to operate the system.</p>
 <h2 id="communication-interfaces">Communication Interfaces</h2>
 <table>
 <thead>
@@ -1220,294 +1459,284 @@
 <tbody>
 <tr>
 <td>UART TX</td>
-<td>UART_DOWN</td>
-<td>TXD0 (GPIO43)</td>
-<td>Sends messages to other subsystems</td>
+<td>UART1 TX</td>
+<td>GPIO17</td>
+<td>Sends motor direction commands to Quinn's motor subsystem</td>
 </tr>
 <tr>
 <td>UART RX</td>
-<td>UART_UP</td>
-<td>RXD0 (GPIO44)</td>
-<td>Receives messages from other subsystems</td>
+<td>UART1 RX</td>
+<td>GPIO16</td>
+<td>Receives WiFi status and error messages</td>
 </tr>
 <tr>
 <td>I2C SCL</td>
 <td>SCL</td>
-<td>GPIO9</td>
+<td>GPIO22</td>
 <td>Clock signal for OLED display</td>
 </tr>
 <tr>
 <td>I2C SDA</td>
 <td>SDA</td>
-<td>GPIO8</td>
+<td>GPIO21</td>
 <td>Data signal for OLED display</td>
 </tr>
 <tr>
 <td>Button 1</td>
-<td>SW1</td>
-<td>GPIO10</td>
+<td>UP</td>
+<td>GPIO19</td>
 <td>User input</td>
 </tr>
 <tr>
 <td>Button 2</td>
-<td>SW2</td>
-<td>GPIO11</td>
+<td>DOWN</td>
+<td>GPIO23</td>
 <td>User input</td>
 </tr>
 <tr>
 <td>Button 3</td>
-<td>SW3</td>
-<td>GPIO12</td>
+<td>LED ON</td>
+<td>GPIO5</td>
 <td>User input</td>
 </tr>
 <tr>
 <td>Button 4</td>
-<td>SW4</td>
-<td>GPIO13</td>
+<td>LED OFF</td>
+<td>GPIO18</td>
 <td>User input</td>
 </tr>
 <tr>
 <td>Status LED</td>
-<td>STATUS_LED</td>
-<td>GPIO21</td>
+<td>LED</td>
+<td>GPIO2</td>
 <td>Visual system feedback</td>
 </tr>
 </tbody>
 </table>
-<p>All signals operate at <strong>3.3V logic levels</strong> compatible with the ESP32-S3.</p>
-<h2 id="uart-message-timing-diagram">UART Message Timing Diagram</h2>
-<p>The following diagram illustrates the structure and timing of UART communication between the Human Interface / UI Subsystem and the rest of the system.</p>
-<p>The ESP32 transmits messages using:
-<strong>UART_DOWN (TXD0 / GPIO43)</strong></p>
-<p>and receives messages using:
-<strong>UART_UP (RXD0 / GPIO44)</strong></p>
-<h3 id="message-format">Message Format</h3>
-<p>UART communication uses the following message structure along with a signal transmission and reception example (Generated using CHATGPT-5):</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Message%20Structure.png" data-desc-position="bottom"><img alt="alt text" src="../Message%20Structure.png"></a></p>
+<p>All signals operate at 3.3V logic levels compatible with the ESP32.</p>
+<h2 id="uart-message-format">UART Message Format</h2>
+<p>The team communication protocol uses a simple framed message format:</p>
+<p>AZ[Sender ID][Receiver ID][Payload]BY</p>
+<p>The message begins with <code>AZ</code> and ends with <code>BY</code>. The sender and receiver IDs identify which subsystem is communicating, and the payload contains the command or status.</p>
 <h2 id="message-data-definitions">Message Data Definitions</h2>
-<p>The following tables define the byte-level structure of the UART messages used by the Human Interface / UI Subsystem. Each table includes the variable name, C data type, valid range recognized by the code, and an example valid message.</p>
-<h3 id="message-1-ui-button-event-message">Message 1: UI Button Event Message</h3>
-<p><strong>Purpose:</strong> Sent from the Human Interface / UI Subsystem to another subsystem when a button is pressed or released.<br>
-<strong>Total number of bytes:</strong> 3</p>
+<h3 id="wifi-connected-message">WiFi Connected Message</h3>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Byte 1</th>
-<th>Byte 2</th>
-<th>Byte 3</th>
+<th>Field</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Variable Name</td>
-<td><code>message_type</code></td>
-<td><code>button_id</code></td>
-<td><code>button_state</code></td>
+<td>Full Message</td>
+<td>AZDRYESYB</td>
 </tr>
 <tr>
-<td>Variable Type</td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
+<td>Sender</td>
+<td>D, Dylan WiFi subsystem</td>
 </tr>
 <tr>
-<td>Min Value</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>Receiver</td>
+<td>R, Roshan OLED/UI subsystem</td>
 </tr>
 <tr>
-<td>Max Value</td>
-<td>1</td>
-<td>4</td>
-<td>1</td>
+<td>Payload</td>
+<td>YES</td>
 </tr>
 <tr>
-<td>Example</td>
-<td>1</td>
-<td>2</td>
-<td>1</td>
+<td>Meaning</td>
+<td>WiFi is connected and system operation is allowed</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Notes:</strong>
-- <code>message_type = 1</code> means "button event"
-- <code>button_id</code> identifies which pushbutton generated the event
-- <code>button_state = 0</code> means released, <code>1</code> means pressed</p>
-<h3 id="message-2-oled-display-update-message">Message 2: OLED Display Update Message</h3>
-<p><strong>Purpose:</strong> Received by the Human Interface / UI Subsystem to update the OLED display.<br>
-<strong>Total number of bytes:</strong> 4</p>
+<p>System behavior:
+- OLED displays WiFi connected status
+- User inputs and outputs are enabled</p>
+<hr>
+<h3 id="wifi-disconnected-message">WiFi Disconnected Message</h3>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Byte 1</th>
-<th>Byte 2</th>
-<th>Byte 3</th>
-<th>Byte 4</th>
+<th>Field</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Variable Name</td>
-<td><code>message_type</code></td>
-<td><code>screen_id</code></td>
-<td><code>status_code</code></td>
-<td><code>value</code></td>
+<td>Full Message</td>
+<td>AZDRNOYB</td>
 </tr>
 <tr>
-<td>Variable Type</td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
-<td><code>int8_t</code></td>
+<td>Sender</td>
+<td>D, Dylan WiFi subsystem</td>
 </tr>
 <tr>
-<td>Min Value</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>-100</td>
+<td>Receiver</td>
+<td>R, Roshan OLED/UI subsystem</td>
 </tr>
 <tr>
-<td>Max Value</td>
-<td>2</td>
-<td>9</td>
-<td>9</td>
-<td>100</td>
+<td>Payload</td>
+<td>NO</td>
 </tr>
 <tr>
-<td>Example</td>
-<td>2</td>
-<td>1</td>
-<td>3</td>
-<td>25</td>
+<td>Meaning</td>
+<td>WiFi is not connected and system operation is disabled</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Notes:</strong>
-- <code>message_type = 2</code> identifies an OLED display update message
-- <code>screen_id</code> selects which screen layout is displayed
-- <code>status_code</code> determines the type of message shown
-- <code>value</code> is a signed numeric value displayed on the screen</p>
-<h3 id="message-3-status-led-control-message">Message 3: Status LED Control Message</h3>
-<p><strong>Purpose:</strong> Received by the Human Interface / UI Subsystem to control the status LED.<br>
-<strong>Total number of bytes:</strong> 3</p>
+<p>System behavior:
+- OLED displays WiFi disconnected status
+- Outputs are disabled
+- User commands are ignored</p>
+<hr>
+<h3 id="motor-forward-command">Motor Forward Command</h3>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Byte 1</th>
-<th>Byte 2</th>
-<th>Byte 3</th>
+<th>Field</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Variable Name</td>
-<td><code>message_type</code></td>
-<td><code>led_mode</code></td>
-<td><code>led_state</code></td>
+<td>Example Message</td>
+<td>AZRQFORWARDBY</td>
 </tr>
 <tr>
-<td>Variable Type</td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
+<td>Sender</td>
+<td>R, Roshan OLED/UI subsystem</td>
 </tr>
 <tr>
-<td>Min Value</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
+<td>Receiver</td>
+<td>Q, Quinn motor subsystem</td>
 </tr>
 <tr>
-<td>Max Value</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
+<td>Payload</td>
+<td>FORWARD</td>
 </tr>
 <tr>
-<td>Example</td>
-<td>3</td>
-<td>1</td>
-<td>1</td>
+<td>Meaning</td>
+<td>Command motors to move forward</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Notes:</strong>
-- <code>message_type = 3</code> identifies an LED control message
-- <code>led_mode</code> determines the LED behavior<br>
-  - <code>0</code> = solid<br>
-  - <code>1</code> = blinking<br>
-  - <code>2</code> = error indication
-- <code>led_state</code> determines whether the LED is on or off<br>
-  - <code>0</code> = off<br>
-  - <code>1</code> = on  </p>
-<h3 id="message-4-heartbeat-ui-alive-message">Message 4: Heartbeat / UI Alive Message</h3>
-<p><strong>Purpose:</strong> Sent periodically from the Human Interface / UI Subsystem to indicate that the subsystem is operating correctly.<br>
-<strong>Total number of bytes:</strong> 3</p>
+<p>System behavior:
+- Sent when user presses forward button
+- Only transmitted if WiFi is connected</p>
+<hr>
+<h3 id="motor-reverse-command">Motor Reverse Command</h3>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Byte 1</th>
-<th>Byte 2</th>
-<th>Byte 3</th>
+<th>Field</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Variable Name</td>
-<td><code>message_type</code></td>
-<td><code>ui_status</code></td>
-<td><code>error_code</code></td>
+<td>Example Message</td>
+<td>AZRQREVERSEBY</td>
 </tr>
 <tr>
-<td>Variable Type</td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
-<td><code>uint8_t</code></td>
+<td>Sender</td>
+<td>R, Roshan OLED/UI subsystem</td>
 </tr>
 <tr>
-<td>Min Value</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
+<td>Receiver</td>
+<td>Q, Quinn motor subsystem</td>
 </tr>
 <tr>
-<td>Max Value</td>
-<td>4</td>
-<td>1</td>
-<td>9</td>
+<td>Payload</td>
+<td>REVERSE</td>
 </tr>
 <tr>
-<td>Example</td>
-<td>4</td>
-<td>1</td>
-<td>0</td>
+<td>Meaning</td>
+<td>Command motors to move in reverse</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Notes:</strong>
-- <code>message_type = 4</code> identifies a heartbeat message
-- <code>ui_status</code> indicates subsystem health<br>
-  - <code>0</code> = subsystem fault<br>
-  - <code>1</code> = subsystem operating normally
-- <code>error_code</code> reports any subsystem error condition<br>
-  - <code>0</code> = no error<br>
-  - <code>1–9</code> = specific subsystem error codes</p>
-<p>When a valid message is received:</p>
+<p>System behavior:
+- Sent when user presses reverse button
+- Only transmitted if WiFi is connected</p>
+<hr>
+<h3 id="error-message">Error Message</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Example Message</td>
+<td>Any message containing ERROR</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>ERROR</td>
+</tr>
+<tr>
+<td>Meaning</td>
+<td>A subsystem has detected an error</td>
+</tr>
+</tbody>
+</table>
+<p>System behavior:
+- OLED displays ERROR
+- System ignores the message
+- Outputs remain disabled or unchanged</p>
+<hr>
+<h2 id="message-validation-process">Message Validation Process</h2>
+<p>When a UART message is received:</p>
 <ol>
-<li>The start byte is detected.</li>
-<li>The message type is identified.</li>
-<li>The data payload is processed.</li>
-<li>The checksum is verified.</li>
-<li>The message is accepted if the checksum is correct.</li>
+<li>The ESP32 reads the incoming UART data  </li>
+<li>The system checks if the message contains ERROR  </li>
+<li>The system checks if the message matches known valid messages  </li>
+<li>If the message is AZDRYESYB, WiFi is set to connected  </li>
+<li>If the message is AZDRNOYB, WiFi is set to disconnected  </li>
+<li>If the message is invalid, OLED displays INVALID  </li>
+<li>The OLED updates to reflect the current system state  </li>
 </ol>
-<p>If the checksum or message format is invalid, the message is discarded.</p>
-<p>This message structure ensures reliable communication between subsystems while preventing corrupted data from affecting system operation.</p>
+<hr>
+<h2 id="system-behavior-summary">System Behavior Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Received Message</th>
+<th>OLED Output</th>
+<th>System Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AZDRYESYB</td>
+<td>WiFi Connected</td>
+<td>Enable operation</td>
+</tr>
+<tr>
+<td>AZDRNOYB</td>
+<td>WiFi Disconnected</td>
+<td>Disable operation</td>
+</tr>
+<tr>
+<td>Contains ERROR</td>
+<td>ERROR</td>
+<td>Ignore message</td>
+</tr>
+<tr>
+<td>Invalid message</td>
+<td>INVALID</td>
+<td>Ignore message</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="compliance-summary">Compliance Summary</h2>
+<p>This communication format satisfies the team API requirements by defining a clear structure for all messages. Each message contains a sender, receiver, and payload, allowing the system to interpret commands consistently.</p>
+<p>The subsystem does not respond to arbitrary UART data. Instead, it validates all messages before taking action. This ensures reliable communication between the WiFi subsystem, motor subsystem, and user interface subsystem.</p>
+<p>This design improves system safety, prevents unintended behavior, and ensures that the user receives accurate and real-time feedback through the OLED display.</p>
 
 
 
@@ -1563,13 +1792,13 @@
         
         
           
-          <a href="../../Appendix/" class="md-footer__link md-footer__link--next" aria-label="Next: Appendix - Main Page">
+          <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-footer__link md-footer__link--next" aria-label="Next: Hardware V2.0">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Appendix - Main Page
+                Hardware V2.0
               </div>
             </div>
             <div class="md-footer__button md-icon">

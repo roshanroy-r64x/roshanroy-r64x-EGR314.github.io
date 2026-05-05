@@ -301,12 +301,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../05-Schematic/Schematic/" class="md-tabs__link">
+        <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-tabs__link">
           
   
     
   
-  05 Schematic
+  05 Schematic &amp; PCB Design
 
         </a>
       </li>
@@ -367,6 +367,66 @@
     
   
   08 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-tabs__link">
+          
+  
+    
+  
+  09 Hardware V2.0
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10-Resources/Resources/" class="md-tabs__link">
+          
+  
+    
+  
+  10 Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../11-Reflection/Reflection/" class="md-tabs__link">
+          
+  
+    
+  
+  11 Reflection
 
         </a>
       </li>
@@ -620,6 +680,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#design-decision-process-and-requirements-justification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Decision Process and Requirements Justification
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -755,11 +824,11 @@
         
   
   
-    <a href="../../05-Schematic/Schematic/" class="md-nav__link">
+    <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    05 Schematic
+    05 Schematic &amp; PCB Design
   </span>
   
 
@@ -922,6 +991,144 @@
     
       
         
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    09 Hardware V2.0
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-Resources/Resources/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10 Resources
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-Reflection/Reflection/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11 Reflection
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
           
         
       
@@ -1003,6 +1210,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#design-decision-process-and-requirements-justification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Decision Process and Requirements Justification
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1029,12 +1245,21 @@
 <h1 id="individual-block-diagram">Individual Block Diagram</h1>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Block.png" data-desc-position="bottom"><img alt="text" src="../Block.png"></a></p>
 <h2 id="block-diagram-description">Block Diagram Description</h2>
-<p>The Human Interface / UI subsystem provides the primary interaction point between the user and the EVScope system. The central component of the subsystem is the ESP32-S3-WROOM microcontroller module, which manages user inputs, display output, and communication with other system components.</p>
-<p>Power for the subsystem is supplied through a 9–12 V barrel jack input and regulated down to 3.3 V using a switching buck regulator. This regulated 3.3 V rail powers the ESP32 module, OLED display, and other interface components.</p>
-<p>User interaction is handled through several push button inputs connected to ESP32 GPIO pins. These buttons allow the user to navigate menus, trigger system functions, or interact with the device during operation. A status indicator LED connected to a GPIO pin provides a simple visual indication of system state, such as power, activity, or error conditions.</p>
-<p>System information and feedback are displayed on a small SSD1306 OLED display connected to the ESP32 using the I2C communication interface. This display allows the subsystem to present system status, configuration information, and user prompts.</p>
-<p>Programming and debugging of the ESP32 are supported through a dedicated UART programming header that connects to an external USB-to-UART adapter. This allows firmware to be uploaded and debug messages to be monitored during development and testing.</p>
-<p>Additional GPIO pins are routed to expansion headers to support future peripherals or debugging connections. These headers provide access to power, ground, I2C signals, and general-purpose input/output pins for flexible subsystem integration.</p>
+<p>The Human Interface / UI subsystem provides the primary interaction point between the user and the EVScope system. The central component of the subsystem is the ESP32-S3-WROOM-1 microcontroller module, which manages user inputs, display output, and communication with other subsystems.</p>
+<p>Power for the subsystem is supplied through a 9–12 V barrel jack input and regulated down to 3.3 V using a switching buck regulator. This regulated 3.3 V rail powers the ESP32 module, OLED display, and all digital interface components. The use of a switching regulator ensures high efficiency and minimizes heat dissipation compared to linear regulation.</p>
+<p>User interaction is handled through four pushbutton inputs connected to ESP32 GPIO pins. These buttons provide directional and control inputs (up, down, select, back) that allow the user to interact with the system. A status LED connected to a GPIO pin provides immediate visual feedback for system states such as activity, enable/disable status, or error conditions.</p>
+<p>System information is displayed on an SSD1306 OLED display connected to the ESP32 via the I2C interface. This allows efficient communication using only two pins while providing real-time feedback such as WiFi status, motor direction, and system errors.</p>
+<p>Communication with other subsystems is handled through UART, which connects the ESP32 to both upstream and downstream ribbon connectors. This enables structured message passing between the WiFi subsystem and motor control subsystem. The use of standardized ribbon connectors ensures consistent integration across the team design.</p>
+<p>Programming and debugging are supported through a UART programming header connected to an external USB-to-UART adapter. This allows firmware to be uploaded and debug messages to be monitored during development. Additional GPIO, power, and communication lines are exposed through expansion headers to support testing and future subsystem integration.</p>
+<hr>
+<h2 id="design-decision-process-and-requirements-justification">Design Decision Process and Requirements Justification</h2>
+<p>The block diagram was developed through an iterative design process focused on meeting the subsystem’s core functional requirements: user interaction, real-time system feedback, reliable communication, and safe operation.</p>
+<p>The ESP32-S3-WROOM-1 was selected as the central controller because it integrates sufficient processing capability, built-in wireless support, and multiple communication interfaces (UART and I2C). This decision reduced overall system complexity while meeting all control and communication requirements.</p>
+<p>A switching buck regulator was chosen instead of a linear regulator due to the large difference between the input voltage (9–12 V) and required output voltage (3.3 V). This decision was made to improve power efficiency and reduce thermal losses, which is critical for stable system operation.</p>
+<p>The OLED display was selected using the I2C interface to minimize pin usage while still providing clear and reliable user feedback. This satisfies the requirement for real-time system visibility without overloading the microcontroller’s available GPIO resources.</p>
+<p>UART communication was chosen for subsystem integration because it provides a simple, reliable, and widely supported method for serial data transfer. The use of upstream and downstream ribbon connectors ensures that the subsystem can be easily integrated into the larger system while maintaining consistent signal routing.</p>
+<p>Pushbuttons and a status LED were included to meet user interface requirements by providing both input and immediate feedback. These components ensure that the user can control the system and understand its current state without relying solely on the display.</p>
+<p>Overall, the block diagram satisfies product requirements by clearly defining how power is distributed, how user input is processed, how system feedback is presented, and how communication occurs between subsystems. Each component was selected and connected with the goal of maximizing reliability, minimizing complexity, and ensuring compatibility with the overall system design.</p>
 
 
 

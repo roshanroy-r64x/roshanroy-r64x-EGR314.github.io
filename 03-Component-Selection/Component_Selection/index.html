@@ -301,12 +301,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../05-Schematic/Schematic/" class="md-tabs__link">
+        <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-tabs__link">
           
   
     
   
-  05 Schematic
+  05 Schematic &amp; PCB Design
 
         </a>
       </li>
@@ -367,6 +367,66 @@
     
   
   08 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-tabs__link">
+          
+  
+    
+  
+  09 Hardware V2.0
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10-Resources/Resources/" class="md-tabs__link">
+          
+  
+    
+  
+  10 Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../11-Reflection/Reflection/" class="md-tabs__link">
+          
+  
+    
+  
+  11 Reflection
 
         </a>
       </li>
@@ -702,6 +762,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#final-major-components-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Major Components Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esp32-pinout-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      ESP32 Pinout Table
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -791,11 +869,11 @@
         
   
   
-    <a href="../../05-Schematic/Schematic/" class="md-nav__link">
+    <a href="../../05-Schematic-%26-PCB-Design/Schematic/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    05 Schematic
+    05 Schematic &amp; PCB Design
   </span>
   
 
@@ -958,6 +1036,144 @@
     
       
         
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-Hardware-V2.0/HardwareV2.0/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    09 Hardware V2.0
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-Resources/Resources/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10 Resources
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-Reflection/Reflection/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11 Reflection
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
           
         
       
@@ -1070,6 +1286,24 @@
   <a href="#status-indicator-led-module" class="md-nav__link">
     <span class="md-ellipsis">
       Status Indicator LED Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-major-components-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Major Components Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esp32-pinout-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      ESP32 Pinout Table
     </span>
   </a>
   
@@ -1316,6 +1550,144 @@ The CH340 USB-to-UART interface allows programming of the ESP32 through a simple
 <p><strong>Selected:</strong> Option A – Kingbright AP2012EC (0805 red LED).</p>
 <p><strong>Rationale:</strong><br>
 A simple single-color LED provides sufficient visual feedback for system status such as power, initialization, or error indication while minimizing circuit complexity.</p>
+<h2 id="final-major-components-summary">Final Major Components Summary</h2>
+<p>The table below summarizes the final major components selected for the Human Interface / UI Subsystem. Passive components, pushbuttons, and other minor elements are not included.</p>
+<table>
+<thead>
+<tr>
+<th>Component Category</th>
+<th>Selected Component</th>
+<th>Description</th>
+<th>Key Reason for Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Embedded Controller</td>
+<td>ESP32-S3-WROOM-1</td>
+<td>Microcontroller module with integrated WiFi and Bluetooth</td>
+<td>High performance, integrated wireless capability, large GPIO availability</td>
+</tr>
+<tr>
+<td>Power Regulation</td>
+<td>AP63203WU Buck Converter</td>
+<td>Switching regulator converting 9–12V to 3.3V</td>
+<td>High efficiency, reduced heat dissipation, compact size</td>
+</tr>
+<tr>
+<td>User Interface Display</td>
+<td>SSD1306 0.96" OLED</td>
+<td>I2C-based monochrome display module</td>
+<td>Low power consumption, simple interface, minimal pin usage</td>
+</tr>
+<tr>
+<td>Programming Interface</td>
+<td>CH340 USB-to-UART Adapter</td>
+<td>External USB-to-serial communication interface</td>
+<td>Low cost, widely used, simple programming solution</td>
+</tr>
+<tr>
+<td>Status Indicator</td>
+<td>Kingbright AP2012EC LED</td>
+<td>Single-color SMT LED for system feedback</td>
+<td>Simple implementation, low cost, minimal hardware complexity</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="esp32-pinout-table">ESP32 Pinout Table</h2>
+<p>The following table lists all ESP32 pins used in the Human Interface / UI Subsystem along with their functions and direction.</p>
+<table>
+<thead>
+<tr>
+<th>ESP32 Pin</th>
+<th>Signal Name</th>
+<th>Direction</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO17</td>
+<td>UART TX</td>
+<td>Output</td>
+<td>Sends UART messages to motor subsystem (Quinn)</td>
+</tr>
+<tr>
+<td>GPIO16</td>
+<td>UART RX</td>
+<td>Input</td>
+<td>Receives UART messages from WiFi subsystem (Dylan)</td>
+</tr>
+<tr>
+<td>GPIO22</td>
+<td>I2C SCL</td>
+<td>Output</td>
+<td>OLED display clock line</td>
+</tr>
+<tr>
+<td>GPIO21</td>
+<td>I2C SDA</td>
+<td>Bi-directional</td>
+<td>OLED display data line</td>
+</tr>
+<tr>
+<td>GPIO19</td>
+<td>Button 1</td>
+<td>Input</td>
+<td>User input (Forward / UP command)</td>
+</tr>
+<tr>
+<td>GPIO23</td>
+<td>Button 2</td>
+<td>Input</td>
+<td>User input (Reverse / DOWN command)</td>
+</tr>
+<tr>
+<td>GPIO5</td>
+<td>Button 3</td>
+<td>Input</td>
+<td>LED ON control input</td>
+</tr>
+<tr>
+<td>GPIO18</td>
+<td>Button 4</td>
+<td>Input</td>
+<td>LED OFF control input</td>
+</tr>
+<tr>
+<td>GPIO2</td>
+<td>Status LED</td>
+<td>Output</td>
+<td>Indicates system state and activity</td>
+</tr>
+<tr>
+<td>3V3</td>
+<td>Power</td>
+<td>Power</td>
+<td>Supplies regulated 3.3V to subsystem components</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>Ground</td>
+<td>Common ground reference</td>
+</tr>
+<tr>
+<td>EN</td>
+<td>Enable</td>
+<td>Input</td>
+<td>Chip enable and reset control</td>
+</tr>
+<tr>
+<td>IO0 (BOOT)</td>
+<td>Boot</td>
+<td>Input</td>
+<td>Used to enter programming mode</td>
+</tr>
+</tbody>
+</table>
+<p>All GPIO pins operate at 3.3V logic levels and are compatible with connected peripherals and subsystem interfaces.</p>
 
 
 
